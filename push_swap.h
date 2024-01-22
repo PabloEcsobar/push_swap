@@ -6,7 +6,7 @@
 /*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/22 12:54:04 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/01/22 15:44:57 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define RRB	"rrb\n"
 # define RRR	"rrr\n"
 
-#include "ft_printf/libft_modul/libft.h"
+#include "ft_printf/libft/libft.h"
 
 //////////////////////////////TOOLS\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 void	push(t_list **dest, t_list **src);

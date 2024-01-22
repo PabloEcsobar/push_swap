@@ -6,7 +6,7 @@
 /*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:53:40 by polenyc           #+#    #+#             */
-/*   Updated: 2024/01/22 12:55:02 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/01/22 15:45:36 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ char	*element_sort(t_list **stack)
 		return (operation);
 	if (*(int *)((*stack)->content) <= *(int *)((*stack)->next->content))
 		return (operation);
-	return (strjoinfree(operation, swap_a(*stack), 2));
+	return (ft_strjoinfree(operation, swap_a(*stack), 2));
 }
