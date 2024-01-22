@@ -12,6 +12,8 @@
                 "rotate.c",
                 "rrotate.c",
                 "swap.c",
+                "element_sort.c",
+                "test.c",
                 "-Lft_printf/libft_modul",
                 "-lft",
                 "-o",
