@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
+/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:54:22 by polenyc           #+#    #+#             */
-/*   Updated: 2024/01/22 15:45:58 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/01/22 23:57:40 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,31 @@ void	del_node(void *tmp)
 	free(tmp);
 }
 
+int	is_num(t_list *list, int x)
+{
+	while (list)
+	{
+		if (*(int *)(list->content) == x)
+			return (1);
+		list = list->next;
+	}
+	return (0);
+}
+
+int	count_oper(char *oper)
+{
+	int count;
+
+	count = 0;
+	while (*oper)
+	{
+		if (*oper == '\n')
+			++count;
+		++oper;
+	}
+	return (count);
+}
+
 int	main()
 {
 	t_list	*list;
@@ -47,7 +72,13 @@ int	main()
 	{
 		// printf("Enter an element of stack:\n");
 		// scanf("%d", &data);
-		ft_lstadd_back(&list, ft_lstnew(make_data(rand() % 10)));
+		data = rand() % 100;
+		if (is_num(list, data))
+		{
+			--i;
+			continue ;
+		}
+		ft_lstadd_back(&list, ft_lstnew(make_data(data)));
 	}
 	tmp = list;
 	i = 0;
@@ -57,10 +88,10 @@ int	main()
 		++i;
 		tmp = tmp->next;
 	}
-	oper = element_sort(&list);
+	oper = push_swap(&list);
 	tmp = list;
 	i = 0;
-	printf("operatnion for sort:\n%s", oper);
+	printf("operatnion for sort:\n%scount: %d\n", oper, count_oper(oper));
 	while (tmp)
 	{
 		printf("list[%d]: %d\n", i, *(int *)(tmp->content));

@@ -14,7 +14,7 @@
                 "swap.c",
                 "element_sort.c",
                 "test.c",
-                "-Lft_printf/libft_modul",
+                "-Lft_printf/libft",
                 "-lft",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"

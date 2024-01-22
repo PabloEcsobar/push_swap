@@ -6,10 +6,11 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:44:48 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/21 19:26:26 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/22 23:46:48 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "push_swap.h"
 

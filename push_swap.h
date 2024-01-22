@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
+/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/22 15:44:57 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/01/22 22:39:30 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,7 @@ char	*rev_rotate_a(t_list **stack);
 char	*rev_rotate_b(t_list **stack);
 
 char	*element_sort(t_list **stack);
+char	*elem_sort_b(t_list **b);
+char	*push_swap(t_list **stack);
+
+void	del_node(void *tmp);
