@@ -6,58 +6,84 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:53:40 by polenyc           #+#    #+#             */
-/*   Updated: 2024/01/22 22:42:32 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/24 13:51:07 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		find_max(t_list *stack)
+int		find_max(t_list *a)
 {
-	t_list	*tmp;
 	int		max;
 
-	if (!stack || !stack->content)
+	if (!a || !a->content)
 		return 0;
-	max = *(int *)(stack->content);
-	tmp = stack->next;
-	while (tmp)
+	max = *(int *)(a->content);
+	a = a->next;
+	while (a)
 	{
-		if (*(int *)(tmp->content) > max)
-			max = *(int *)(tmp->content);
-		tmp = tmp->next;
+		if (*(int *)(a->content) > max)
+			max = *(int *)(a->content);
+		a = a->next;
 	}
 	return (max);
 }
 
-char	*put_max(t_list **stack, int max, int size)
+int		find_min(t_list *a)
 {
-	if (*(int *)((*stack)->content) == max)
-		return (rotate_a(stack));
-	if (*(int *)((*stack)->next->content) == max && size > 2)
-		return (rev_rotate_a(stack));
-	return (ft_strdup(""));
+	int		min;
+
+	if (!a || !a->content)
+		return 0;
+	min = *(int *)(a->content);
+	a = a->next;
+	while (a)
+	{
+		if (*(int *)(a->content) < min)
+			min = *(int *)(a->content);
+		a = a->next;
+	}
+	return (min);
 }
 
-char	*element_sort(t_list **stack)
+char	*put_max(t_list **a, int max, int size, int pos)
+{
+	if (!pos)
+	{
+		if (*(int *)((*a)->content) == max)
+			return (rotate_a(a));
+		if (*(int *)((*a)->next->content) == max && size > 2)
+			return (rev_rotate_a(a));
+		return (ft_strdup(""));
+	}
+	if (*(int *)((*a)->content) == max)
+		return (ft_strdup(""));
+	if (*(int *)((*a)->next->content) == max && size > 2)
+		return (swap_a(*a));
+	return (rev_rotate_a(a));
+}	
+
+char	*element_sort(t_list **a)
 {
 	char	*operation;
 	t_list	*tmp;
 	int		size;
 
-	size = ft_lstsize(*stack);
+	size = ft_lstsize(*a);
 	if (size > 3 || size < 2)
 		return (ft_strdup(""));
-	operation = put_max(stack, find_max(*stack), size);
+	operation = put_max(a, find_max(*a), size, 0);
 	if (size == 2)
 		return (operation);
-	if (*(int *)((*stack)->content) <= *(int *)((*stack)->next->content))
+	if (*(int *)((*a)->content) <= *(int *)((*a)->next->content))
 		return (operation);
-	return (ft_strjoinfree(operation, swap_a(*stack), 2));
+	return (ft_strjoinfree(operation, swap_a(*a), 2));
 }
 
 char	*elem_sort_b(t_list **b)
 {
+	if (!(*b)->next)
+		return (ft_strdup(""));
 	if (*(int *)((*b)->content) > *(int *)((*b)->next->content))
 		return (ft_strdup(""));
 	return (swap_b(*b));

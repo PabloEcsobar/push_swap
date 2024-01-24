@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/22 22:39:30 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/24 14:56:08 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,8 @@ char	*element_sort(t_list **stack);
 char	*elem_sort_b(t_list **b);
 char	*push_swap(t_list **stack);
 
+int		find_max(t_list *a);
+int		find_min(t_list *a);
 void	del_node(void *tmp);
+
+char	*sort_b(t_list **a, t_list **b, int min_size);
