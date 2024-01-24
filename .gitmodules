@@ -4,3 +4,6 @@
 [submodule "get_next_line"]
 	path = get_next_line
 	url = git@github.com:PabloEcsobar/get_next_line.git
+[submodule "sorts_alg"]
+	path = sorts_alg
+	url = git@github.com:PabloEcsobar/sorts_alg.git
