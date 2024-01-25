@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:54:22 by polenyc           #+#    #+#             */
-/*   Updated: 2024/01/24 14:51:00 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/25 15:53:29 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,8 @@ int	test(int size)
 		}
 		ft_lstadd_back(&list, ft_lstnew(make_data(data)));
 	}
-	oper = push_swap(&list);
+	// oper = push_swap(&list);
+	oper = arr_sort(&list);
 	count = count_oper(oper);
 	// printf("operatnion for sort:\n%scount: %d\n", oper, count);
 	tmp = list;

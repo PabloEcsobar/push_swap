@@ -14,9 +14,12 @@
                 "swap.c",
                 "element_sort.c",
                 "trivial_sort.c",
+                "arr_sort.c",
                 "test.c",
                 "-Lft_printf/libft",
                 "-lft",
+                "-Lsorts_alg",
+                "-lsortsalg",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
