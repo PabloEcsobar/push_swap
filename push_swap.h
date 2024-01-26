@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/26 12:28:03 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/26 15:16:16 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct			s_dllist
 t_dllist	*newnode(void *data);
 t_dllist	*add_back(t_dllist **llist, t_dllist *new);
 t_dllist	*add_front(t_dllist **llist, t_dllist *new);
-void		*llist_clear(t_dllist **llist, t_dllist *f, void (*del)(void *d));
-int			*llist_size(t_dllist *llist);
+void		*llist_clear(t_dllist **llist, void (*del)(void *d));
+int			llist_size(t_dllist *llist);
 //////////////////////////////TOOLS LLIST\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 char		*push_all(t_dllist **dest, t_dllist **src);
 char		*push_bll(t_dllist **dest, t_dllist **src);
@@ -44,8 +44,8 @@ char		*rotate_all(t_dllist **llist);
 char		*rotate_bll(t_dllist **llist);
 char		*rev_rotate_all(t_dllist **llist);
 char		*rev_rotate_bll(t_dllist **llist);
-char		*swap_all(t_list *llist);
-char		*swap_bll(t_list *llist);
+char		*swap_all(t_dllist *llist);
+char		*swap_bll(t_dllist *llist);
 //////////////////////////////TOOLS\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 void		push(t_list **dest, t_list **src);
 char		*push_a(t_list **dest, t_list **src);
@@ -73,4 +73,4 @@ void		del_node(void *tmp);
 
 char	    *sort_b(t_list **a, t_list **b, int min_size);
 char	    *arr_sort(t_list **a);
-int		    *make_arr(t_list *a, int size);
+char		*sndtimes(t_dllist **a, int scatter);

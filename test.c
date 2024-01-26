@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:54:22 by polenyc           #+#    #+#             */
-/*   Updated: 2024/01/25 16:08:31 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/26 16:15:01 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,17 @@ int	is_num(t_list *list, int x)
 	return (0);
 }
 
+int	is_numll(t_dllist *list, int x)
+{
+	while (list)
+	{
+		if (*(int *)(list->data) == x)
+			return (1);
+		list = list->next;
+	}
+	return (0);
+}
+
 int	count_oper(char *oper)
 {
 	int count;
@@ -53,6 +64,44 @@ int	count_oper(char *oper)
 		++oper;
 	}
 	return (count);
+}
+
+t_list	*crt_randlist(int size)
+{
+	int		data;
+	t_list	*list;
+
+	list = NULL;
+	for (int i= 0; i < size; ++i)
+	{
+		data = rand() % 1000;
+		if (is_num(list, data))
+		{
+			--i;
+			continue ;
+		}
+		ft_lstadd_back(&list, ft_lstnew(make_data(data)));
+	}
+	return (list);
+}
+
+t_dllist	*crt_randllist(int size)
+{
+	int			data;
+	t_dllist	*list;
+
+	list = NULL;
+	for (int i= 0; i < size; ++i)
+	{
+		data = rand() % 1000;
+		if (is_numll(list, data))
+		{
+			--i;
+			continue ;
+		}
+		add_back(&list, newnode(make_data(data)));
+	}
+	return (list);
 }
 
 // int test(int size)
@@ -105,52 +154,91 @@ int	count_oper(char *oper)
 // 	return (count);
 // }
 
+
+// int	test(int size)
+// {
+// 	t_list	*list;
+// 	t_list	*tmp;
+// 	int		data;
+// 	int		i;
+// 	char	*oper;
+// 	int		count;
+
+// 	list = crt_randlist(size);
+// 	oper = push_swap(&list);
+// 	// oper = arr_sort(&list);
+// 	count = count_oper(oper);
+// 	// printf("operatnion for sort:\n%scount: %d\n", oper, count);
+// 	tmp = list;
+// 	i = 0;
+// 	// while (tmp)
+// 	// {
+// 	// 	printf("list[%d]: %d\n", i, *(int *)(tmp->content));
+// 	// 	tmp = tmp->next;
+// 	// 	++i;
+// 	// }
+// 	// printf("-------------------/\\-----------------------------\n");
+// 	data = *(int *)(list->content);
+// 	tmp = list->next;
+// 	while (tmp)
+// 	{
+// 		if (data > *(int *)(tmp->content))
+// 		{
+// 			printf("ERROR!!! BAD SORT ALGORITHM!!!\n");
+// 			return (-1);
+// 		}
+// 		data = *(int *)(tmp->content);
+// 		tmp = tmp->next;
+// 	}
+// 	ft_lstclear(&list, del_node);
+// 	return (count);
+// }
+
 int	test(int size)
 {
-	t_list	*list;
-	t_list	*tmp;
-	int		data;
-	int		i;
-	char	*oper;
-	int		count;
+	t_dllist	*list;
+	t_dllist	*tmp;
+	int			data;
+	int			i;
+	char		*oper;
+	int			count;
 
-	list = NULL;
-	for (int i= 0; i < size; ++i)
-	{
-		data = rand() % 1000;
-		if (is_num(list, data))
-		{
-			--i;
-			continue ;
-		}
-		ft_lstadd_back(&list, ft_lstnew(make_data(data)));
-	}
-	oper = push_swap(&list);
-	// oper = arr_sort(&list);
-	count = count_oper(oper);
-	// printf("operatnion for sort:\n%scount: %d\n", oper, count);
+	list = crt_randllist(size);
 	tmp = list;
 	i = 0;
-	// while (tmp)
-	// {
-	// 	printf("list[%d]: %d\n", i, *(int *)(tmp->content));
-	// 	tmp = tmp->next;
-	// 	++i;
-	// }
-	// printf("-------------------/\\-----------------------------\n");
-	data = *(int *)(list->content);
-	tmp = list->next;
 	while (tmp)
 	{
-		if (data > *(int *)(tmp->content))
-		{
-			printf("ERROR!!! BAD SORT ALGORITHM!!!\n");
-			return (-1);
-		}
-		data = *(int *)(tmp->content);
+		printf("list[%d]: %d\n", i, *(int *)(tmp->data));
 		tmp = tmp->next;
+		++i;
 	}
-	ft_lstclear(&list, del_node);
+	oper = sndtimes(&list, 3);
+	count = count_oper(oper);
+	// printf("operatnion for sort:\n%scount: %d\n", oper, count);
+	// printf("operation count: %d\n", count);
+	tmp = list;
+	i = 0;
+	printf("\n");
+	while (tmp)
+	{
+		printf("list[%d]: %d\n", i, *(int *)(tmp->data));
+		tmp = tmp->next;
+		++i;
+	}
+	printf("-------------------/\\-----------------------------\n");
+	data = *(int *)(list->data);
+	tmp = list->next;
+	// while (tmp)
+	// {
+	// 	if (data > *(int *)(tmp->data))
+	// 	{
+	// 		printf("ERROR!!! BAD SORT ALGORITHM!!!\n");
+	// 		return (-1);
+	// 	}
+	// 	data = *(int *)(tmp->data);
+	// 	tmp = tmp->next;
+	// }
+	llist_clear(&list, del_node);
 	return (count);
 }
 

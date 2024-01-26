@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:40:22 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/26 14:33:07 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/26 16:27:59 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,24 @@ void	push_ll(t_dllist **dest, t_dllist **src)
 	if (!(*src))
 		return ;
 	tmp = *src;
+	printf("size a: %d\tsize b: %d\n", llist_size(*src), llist_size(*dest));
+	if (llist_size(*dest) > 3)
+		printf("opa");
 	if ((*src)->next)
 		(*src)->next->previos = (*src)->previos;
 	*src = (*src)->next;
 	tmp->next = *dest;
+	if (!(*dest))
+	{
+		tmp->previos = NULL;
+		*dest = tmp;
+		return ;
+	}
 	tmp->previos = (*dest)->previos;
-	(*dest)->next->previos = tmp;
+	if (!tmp->previos)
+		tmp->previos = *dest;
+	if ((*dest)->next)
+		(*dest)->next->previos = tmp;
 	*dest = tmp;
 }
 

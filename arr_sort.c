@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:05:37 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/25 15:49:30 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/26 15:12:51 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int		*make_arr(t_list *a, int size)
+static int		*make_arr(t_list *a, int size)
 {
 	int	*arr;
 	int	*tmp;
