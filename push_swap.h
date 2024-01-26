@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/25 23:35:38 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/26 12:28:03 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_dllist	*newnode(void *data);
 t_dllist	*add_back(t_dllist **llist, t_dllist *new);
 t_dllist	*add_front(t_dllist **llist, t_dllist *new);
 void		*llist_clear(t_dllist **llist, t_dllist *f, void (*del)(void *d));
-int			*llist_size(t_dllist *llist, t_dllist *f);
+int			*llist_size(t_dllist *llist);
 //////////////////////////////TOOLS LLIST\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 char		*push_all(t_dllist **dest, t_dllist **src);
 char		*push_bll(t_dllist **dest, t_dllist **src);
@@ -71,5 +71,6 @@ int			find_max(t_list *a);
 int			find_min(t_list *a);
 void		del_node(void *tmp);
 
-char	*sort_b(t_list **a, t_list **b, int min_size);
-char	*arr_sort(t_list **a);
+char	    *sort_b(t_list **a, t_list **b, int min_size);
+char	    *arr_sort(t_list **a);
+int		    *make_arr(t_list *a, int size);

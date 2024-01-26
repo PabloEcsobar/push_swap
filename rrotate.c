@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:48:02 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/25 23:30:35 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/26 14:30:07 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 void	rev_rotate_ll(t_dllist **llist)
 {
-	if (!(*llist) || !(*llist)->next)
+	if (!(*llist) || (*llist)->next == (*llist)->previos)
 		return ;
+	(*llist)->previos->next = *llist;
 	*llist  = (*llist)->previos;
+	(*llist)->previos->next = NULL;
 }
 
 void	rev_rotate(t_list **stack)
@@ -45,5 +47,17 @@ char	*rev_rotate_a(t_list **stack)
 char	*rev_rotate_b(t_list **stack)
 {
 	rev_rotate(stack);
+	return (ft_strdup(RRB));
+}
+
+char	*rev_rotate_all(t_dllist **llist)
+{
+	rev_rotate_ll(llist);
+	return (ft_strdup(RRA));
+}
+
+char	*rev_rotate_bll(t_dllist **llist)
+{
+	rev_rotate_ll(llist);
 	return (ft_strdup(RRB));
 }

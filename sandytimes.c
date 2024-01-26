@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 22:18:11 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/25 22:45:11 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/25 23:38:55 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		score(t_list *a, int num)
 	while ()
 }
 
-char	*batterfly(t_list **a)
+char	*batterfly(t_dllist **a)
 {
 
 }

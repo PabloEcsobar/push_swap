@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:41:57 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/25 23:35:11 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/26 13:10:19 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	swap_ll(t_dllist *llist)
 	t_dllist	tmp;
 
 	if (!llist || !llist->next)
+		return ;
+	if (llist_size(llist) < 2)
 		return ;
 	tmp.data = llist->data;
 	llist->data = llist->next->data;
