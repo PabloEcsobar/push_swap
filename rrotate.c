@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:48:02 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/26 14:30:07 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/29 14:33:05 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	rev_rotate_ll(t_dllist **llist)
 {
-	if (!(*llist) || (*llist)->next == (*llist)->previos)
+	if (!(*llist) || !(*llist)->next)
 		return ;
 	(*llist)->previos->next = *llist;
 	*llist  = (*llist)->previos;

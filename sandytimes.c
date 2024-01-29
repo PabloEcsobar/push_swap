@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 22:18:11 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/26 16:21:46 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/29 18:37:30 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,32 @@ static int		*make_arr(t_dllist *a, int size)
 	return (arr);
 }
 
-int			score(t_dllist *a, int num)
+int			score_as(t_dllist *a, int num)
+{
+	t_dllist	*tmp;
+	int			counter;
+	int			size;
+
+	counter = 0;
+	tmp = a;
+	size = llist_size(a) + 1;
+	size /= 2; 
+	while (counter < size && *(int *)(tmp->data) < num)
+	{
+		tmp = tmp->next;
+		++counter;
+	}
+	tmp = a->previos;
+	--counter;
+	while (counter > 0 && *(int *)(tmp->data) < num)
+	{
+		tmp = tmp->previos;
+		--counter;
+	}
+	return (counter);
+}
+
+int			score_a(t_dllist *a, int num)
 {
 	t_dllist	*tmp;
 	int			counter;
@@ -59,6 +84,31 @@ int			score(t_dllist *a, int num)
 	return (counter);
 }
 
+int			score_b(t_dllist *a, int num)
+{
+	t_dllist	*tmp;
+	int			counter;
+	int			size;
+
+	counter = 0;
+	tmp = a;
+	size = llist_size(a) + 1;
+	size /= 2; 
+	while (counter < size && *(int *)(tmp->data) != num)
+	{
+		tmp = tmp->next;
+		++counter;
+	}
+	tmp = a->previos;
+	--counter;
+	while (counter > 0 && *(int *)(tmp->data) != num)
+	{
+		tmp = tmp->previos;
+		--counter;
+	}
+	return (counter);
+}
+
 char		*sndt_sort(t_dllist **a, t_dllist **b, int scatt)
 {
 	char	*oper;
@@ -72,14 +122,14 @@ char		*sndt_sort(t_dllist **a, t_dllist **b, int scatt)
 	i = 0;
 	while (*a)
 	{
-		if (score(*a, arr[i + scatt]) < 1)
+		if (score_a(*a, arr[i + scatt]) < 1)
 			while (*(int *)((*a)->data) > arr[i + scatt])
 				oper = ft_strjoinfree(oper, rotate_all(a), 2);
 		else
 			while (*(int *)((*a)->data) > arr[i + scatt])
 				oper = ft_strjoinfree(oper, rev_rotate_all(a), 2);
 		oper = ft_strjoinfree(oper, push_bll(b, a), 2);
-		if (*(int *)((*b)->data) < arr[i + scatt / 2])
+		if (*(int *)((*b)->data) < arr[i])
 			oper = ft_strjoinfree(oper, rotate_bll(b), 2);
 		++i;
 		if (i + scatt >= size)
@@ -89,17 +139,61 @@ char		*sndt_sort(t_dllist **a, t_dllist **b, int scatt)
 	return (oper);
 }
 
+char		*spacin_func(t_dllist **a, t_dllist **b, int scatt)
+{
+	char	*oper;
+	int		*arr;
+	int		size;
+	int		i;
+
+	oper = NULL;
+	size = llist_size(*a);
+	arr = make_arr(*a, size);
+	i = size - 1;
+	while (*a)
+	{
+		if (score_as(*a, arr[i - scatt]) < 1)
+			while (*(int *)((*a)->data) < arr[i - scatt])
+				oper = ft_strjoinfree(oper, rotate_all(a), 2);
+		else
+			while (*(int *)((*a)->data) < arr[i - scatt])
+				oper = ft_strjoinfree(oper, rev_rotate_all(a), 2);
+		oper = ft_strjoinfree(oper, push_bll(b, a), 2);
+		if (i - scatt > 0)
+			--i;
+	}
+	*a = *b;
+	*b = NULL;
+	free(arr);
+	return (oper);
+}
+
 char		*sndtimes(t_dllist **a, int scatter)
 {
 	char		*oper;
 	int			*arr;
+	int			size;
 	int			i;
 	t_dllist	*b;
 
 	b = NULL;
 	oper = sndt_sort(a, &b, scatter);
-	*a = b;
-	// while (b)
-		// oper = ft_strjoinfree(oper, push_all(a, &b), 2);
+	// oper = spacin_func(a, &b, llist_size(*a) / 5);
+	// oper = ft_strjoinfree(oper, sndt_sort(a, &b, scatter), 2);
+	size = llist_size(b);
+	arr = make_arr(b, size);
+	i = 1;
+	while (b && i <= size)
+	{
+		if (score_b(b, arr[size - i]) < 1)
+			while (*(int *)(b->data) != arr[size - i])
+				oper = ft_strjoinfree(oper, rotate_bll(&b), 2);
+		else
+			while (*(int *)(b->data) != arr[size - i])
+				oper = ft_strjoinfree(oper, rev_rotate_bll(&b), 2);
+		oper = ft_strjoinfree(oper, push_all(a, &b), 2);
+		++i;
+	}
+	free(arr);
 	return (oper);
 }
