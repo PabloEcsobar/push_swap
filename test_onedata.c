@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 19:05:58 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/29 21:03:01 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/29 22:20:55 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	is_numll(t_dllist *list, int x)
 	return (0);
 }
 
-int	count_oper(char *oper)
+int	matrix(char *oper)
 {
 	int count;
 
@@ -122,20 +122,7 @@ int		found_n(t_dllist *a, t_dllist *b)
 int			llstcmp(t_dllist *a, t_dllist *b)
 {
 	t_dllist	*tmp;
-	// t_dllist	*tmp_a;
-	// t_dllist	*tmp_b;
-	// int			i;
-
-	// tmp_a = a;
-	// tmp_b = b;
-	// i = 0;
-	// while (tmp_a && tmp_b)
-	// {
-	// 	printf("a[%d]: %d\tb[%d]: %d\n", i, *(int *)(tmp_a->data), i, *(int *)(tmp_b->data));
-	// 	++i;
-	// 	tmp_a = tmp_a->next;
-	// 	tmp_b = tmp_b->next;
-	// }
+	
 	if (!b && !a)
 		return (1);
 	if (!b || !a)
@@ -172,7 +159,7 @@ int	test(t_dllist *list, int scatter, void (*del)(void *))
 	if (!llstcmp(tmp, list))
 		return (bad_func(&list, &tmp, "ERROR!!! BAD SORT ALGORITHM!!!", del));
 	llist_clear(&tmp, del);
-	count = count_oper(oper);
+	count = matrix(oper);
 	data = *(int *)(list->data);
 	tmp = list->next;
 	while (tmp)
@@ -186,61 +173,89 @@ int	test(t_dllist *list, int scatter, void (*del)(void *))
 	return (count);
 }
 
-void	*bad_test(t_dllist **list, float *arr, void (*del)(void *))
+void	*bad_test(t_dllist **list, float **arr, void (*del)(void *))
 {
+	float	**tmp;
+
 	llist_clear(list, del);
+	tmp = arr;
+	while (tmp)
+	{
+		free(*tmp);
+		++tmp;
+	}
 	free(arr);
 	return (NULL);
 }
 
-float	*test_for_scat(int count, int size, int sc_min, int sc_max)
+float	**crtmatrix(int count, int size)
 {
-	int			i;
-	int			j;
-	int			tmp;
-	float		*count_oper;
-	t_dllist	*original;
+	int		i;
+	float	**arr;
 
-	count_oper = calloc(sc_max - sc_min + 2, sizeof(float));
-	if (!count_oper)
+	arr = malloc((count + 1) * sizeof(float *));
+	if (!matrix)
 		return (NULL);
 	i = 0;
 	while (i < count)
 	{
+		arr[i] = calloc(size, sizeof(float));
+		if (!arr[i])
+			return (NULL);
+		++i;
+	}
+	arr[count] = NULL;
+	return (arr);
+}
+
+float	**test_for_scat(int count, int size, int sc_min, int sc_max)
+{
+	int			i;
+	int			j;
+	int			tmp;
+	float		**matrix;
+	t_dllist	*original;
+
+	matrix = crtmatrix(sc_max - sc_min + 1, 2);
+	i = 0;
+	while (i < count)
+	{
 		original = crt_randllist(size);
-		j = 1;
+		j = 0;
 		while (j <= sc_max - sc_min)
 		{
 			tmp = test(llistcpy(original), sc_min + j, &del_node);
 			if (tmp < 0)
-				return (bad_test(&original, count_oper, &del_node));
-			if (tmp > (int)count_oper[0])
-				count_oper[0] = (float)tmp;
-			count_oper[j] += (float)tmp;
+				return (bad_test(&original, matrix, &del_node));
+			if (tmp > (int)matrix[j][0])
+				matrix[j][0] = (float)tmp;
+			matrix[j][1] += (float)tmp;
 			++j;
 		}
 		llist_clear(&original, &del_node);
 		++i;
 	}
-	return (count_oper);
+	return (matrix);
 }
 
 int		test_for_num(int count, int size, int sc_min, int sc_max)
 {
 	int		i;
-	float	*count_oper;
+	int		j;
+	float	**matrix;
 
-	count_oper = test_for_scat(count, size, sc_min, sc_max);
-	if (!count_oper)
+	matrix = test_for_scat(count, size, sc_min, sc_max);
+	if (!matrix)
 		return (-1);
-	i = 0;
-	--sc_min;
+	i = -1;
 	while (++i <= sc_max - sc_min)
 	{
-		count_oper[i] /= count;
+		matrix[i][1] /= (float)count;
 		printf("Averege count of operation need for sort stack with scatter %d: %f\tmax number of operation: %d\n", 
-		sc_min + i, count_oper[i], count_oper[0]);
+		sc_min + i, matrix[i][1], (int)matrix[i][0]);
 	}
+	free(matrix);
+	return (1);
 }
 
 int	main()
