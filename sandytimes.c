@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 22:18:11 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/29 18:37:30 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/29 18:59:07 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,6 @@ static int		*make_arr(t_dllist *a, int size)
 	}
 	merge_insert(arr, 0, size - 1);
 	return (arr);
-}
-
-int			score_as(t_dllist *a, int num)
-{
-	t_dllist	*tmp;
-	int			counter;
-	int			size;
-
-	counter = 0;
-	tmp = a;
-	size = llist_size(a) + 1;
-	size /= 2; 
-	while (counter < size && *(int *)(tmp->data) < num)
-	{
-		tmp = tmp->next;
-		++counter;
-	}
-	tmp = a->previos;
-	--counter;
-	while (counter > 0 && *(int *)(tmp->data) < num)
-	{
-		tmp = tmp->previos;
-		--counter;
-	}
-	return (counter);
 }
 
 int			score_a(t_dllist *a, int num)
@@ -139,35 +114,6 @@ char		*sndt_sort(t_dllist **a, t_dllist **b, int scatt)
 	return (oper);
 }
 
-char		*spacin_func(t_dllist **a, t_dllist **b, int scatt)
-{
-	char	*oper;
-	int		*arr;
-	int		size;
-	int		i;
-
-	oper = NULL;
-	size = llist_size(*a);
-	arr = make_arr(*a, size);
-	i = size - 1;
-	while (*a)
-	{
-		if (score_as(*a, arr[i - scatt]) < 1)
-			while (*(int *)((*a)->data) < arr[i - scatt])
-				oper = ft_strjoinfree(oper, rotate_all(a), 2);
-		else
-			while (*(int *)((*a)->data) < arr[i - scatt])
-				oper = ft_strjoinfree(oper, rev_rotate_all(a), 2);
-		oper = ft_strjoinfree(oper, push_bll(b, a), 2);
-		if (i - scatt > 0)
-			--i;
-	}
-	*a = *b;
-	*b = NULL;
-	free(arr);
-	return (oper);
-}
-
 char		*sndtimes(t_dllist **a, int scatter)
 {
 	char		*oper;
@@ -178,8 +124,6 @@ char		*sndtimes(t_dllist **a, int scatter)
 
 	b = NULL;
 	oper = sndt_sort(a, &b, scatter);
-	// oper = spacin_func(a, &b, llist_size(*a) / 5);
-	// oper = ft_strjoinfree(oper, sndt_sort(a, &b, scatter), 2);
 	size = llist_size(b);
 	arr = make_arr(b, size);
 	i = 1;

@@ -17,7 +17,7 @@
                 "arr_sort.c",
                 "dlist.c",
                 "sandytimes.c",
-                "test.c",
+                "test_onedata.c",
                 "-Lft_printf/libft",
                 "-lft",
                 "-Lsorts_alg",
