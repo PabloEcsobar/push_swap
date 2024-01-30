@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/26 15:16:16 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/30 14:20:14 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ char		*rev_rotate_bll(t_dllist **llist);
 char		*swap_all(t_dllist *llist);
 char		*swap_bll(t_dllist *llist);
 //////////////////////////////TOOLS\\\\\\\\\\\\\\\\\\\\\\\\\\\/
+char	    *llst_tolst(t_dllist **llst);
+
 void		push(t_list **dest, t_list **src);
 char		*push_a(t_list **dest, t_list **src);
 char		*push_b(t_list **dest, t_list **src);
@@ -74,3 +76,5 @@ void		del_node(void *tmp);
 char	    *sort_b(t_list **a, t_list **b, int min_size);
 char	    *arr_sort(t_list **a);
 char		*sndtimes(t_dllist **a, int scatter);
+
+void	    *make_data(int x);

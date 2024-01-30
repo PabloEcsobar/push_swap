@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:54:48 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/24 14:55:07 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/30 14:35:31 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ char	*sort_b(t_list **a, t_list **b, int min_size)
 	int		*b_max;
 	int		*b_min;
 	
+	if (ft_lstsize(*a) <= min_size)
+		return (element_sort(a));
 	oper = NULL;
 	b_min = malloc(sizeof(int));
 	b_max = malloc(sizeof(int));
