@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 19:05:58 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/30 14:28:35 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/01/30 14:41:22 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,8 +155,11 @@ int	test(t_dllist *list, int scatter, void (*del)(void *))
 	int			count;
 
 	tmp = llistcpy(list);
-	// oper = sndtimes(&list, scatter);
-	oper = llst_tolst(&list);
+	if (llist_size(list) < 10)
+		// oper = sndtimes(&list, scatter);
+		oper = llst_tolst(&list);
+	else
+		oper = sndtimes(&list, scatter);
 	if (!llstcmp(tmp, list))
 		return (bad_func(&list, &tmp, "ERROR!!! BAD SORT ALGORITHM!!!", del));
 	llist_clear(&tmp, del);
