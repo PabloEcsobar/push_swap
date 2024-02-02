@@ -7,3 +7,6 @@
 [submodule "sorts_alg"]
 	path = sorts_alg
 	url = git@github.com:PabloEcsobar/sorts_alg.git
+[submodule "ft_pow"]
+	path = ft_pow
+	url = git@github.com:PabloEcsobar/ft_pow.git
