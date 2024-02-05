@@ -6,13 +6,13 @@
 /*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 19:05:58 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/05 12:19:06 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/05 16:29:51 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <time.h>
-#include "push_swap.h"
+#include "../src/push_swap.h"
 
 void	*make_data(int x)
 {

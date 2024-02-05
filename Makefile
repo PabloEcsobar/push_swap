@@ -6,22 +6,27 @@
 #    By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/05 12:43:58 by polenyc           #+#    #+#              #
-#    Updated: 2024/02/05 14:29:13 by polenyc          ###   ########.fr        #
+#    Updated: 2024/02/05 16:34:42 by polenyc          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = libpush_swap.a
+TEST = test
+TMP = libtmp.a
 
 FILES = arr_sort.c dlist.c element_sort.c push_swap.c push.c rotate.c rrotate.c \
 	swap.c sandytimes.c scatter.c trivial_sort.c \
 	
-TEST = test_onedata.c
+TESTFILE = test_onedata.c
 
+TESTDIR = tests
 SRCDIR = src
 OBJDIR = $(SRCDIR)/objs
 
 SRC = $(addprefix $(SRCDIR)/, $(FILES))
 OBJ = $(SRC:$(SRCDIR)%.c=$(OBJDIR)/%.o)
+
+TST = $(addprefix $(TESTDIR)/, $(TESTFILE))
 
 FTPOWDIR = ft_pow
 FTPRINTFDIR = ft_printf
@@ -30,7 +35,7 @@ SORTADIR = sorts_alg
 
 FTPOW = ftpow
 FTPRINTF = ftprintf
-GNL = get_next_line
+GNL = gnl
 SORTA = sortsalg
 
 CC = gcc
@@ -44,9 +49,14 @@ LSORTA = -L$(SORTADIR) -l$(SORTA)
 
 all: $(NAME)
   
-$(NAME): $(OBJ) $(FTPOW) $(FTPRINTF) $(GNL) $(SORTA)
-	ar -rc $(NAME) $(OBJ)
+$(NAME): $(OBJ) $(TMP)
+	ar -rc $(NAME) $(TMP) $(OBJ)
 	ranlib $(NAME)
+
+$(TMP): $(FTPOW) $(FTPRINTF) $(GNL) $(SORTA)
+	ar -rc $(TMP) $(FTPRINTFDIR)/lib$(FTPRINTF).a $(FTPOWDIR)/lib$(FTPOW).a $(GNLDIR)/lib$(GNL).a $(SORTADIR)/lib$(SORTA).a
+	ranlib $(TMP)
+	
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)
@@ -64,6 +74,11 @@ $(GNL):
 $(SORTA):
 	$(MAKE) -C $(SORTADIR)
 
+$(TEST): $(NAME)
+	$(CC) $(TST) -o $@ -L. -lpush_swap
+	
+test: $(TEST)
+
 clean:
 	$(MAKE) -C $(FTPOWDIR) clean
 	$(MAKE) -C $(FTPRINTFDIR) clean
@@ -71,7 +86,7 @@ clean:
 	$(MAKE) -C $(SORTADIR) clean
 	rm -rf $(OBJDIR)
 
-fclean: re
+fclean: clean
 	$(MAKE) -C $(FTPOWDIR) fclean
 	$(MAKE) -C $(FTPRINTFDIR) fclean
 	$(MAKE) -C $(GNLDIR) fclean
