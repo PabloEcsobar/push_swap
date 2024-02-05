@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/30 14:20:14 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/02 15:18:36 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,28 @@
 
 #include "ft_printf/libft/libft.h"
 
-typedef struct			s_dllist
+typedef struct			s_llist
 {
     void				*data;
-    struct s_dllist		*next;
-    struct s_dllist		*previos;
-}						t_dllist;
+    struct s_llist		*next;
+    struct s_llist		*previos;
+}						t_llist;
 //////////////////////////////LLIST\\\\\\\\\\\\\\\\\\\\\\\\\\\/
-t_dllist	*newnode(void *data);
-t_dllist	*add_back(t_dllist **llist, t_dllist *new);
-t_dllist	*add_front(t_dllist **llist, t_dllist *new);
-void		*llist_clear(t_dllist **llist, void (*del)(void *d));
-int			llist_size(t_dllist *llist);
+t_llist	    *newnode(void *data);
+t_llist	    *add_back(t_llist **llist, t_llist *new);
+t_llist	    *add_front(t_llist **llist, t_llist *new);
+void		*llist_clear(t_llist **llist, void (*del)(void *d));
+int			llist_size(t_llist *llist);
 //////////////////////////////TOOLS LLIST\\\\\\\\\\\\\\\\\\\\\\\\\\\/
-char		*push_all(t_dllist **dest, t_dllist **src);
-char		*push_bll(t_dllist **dest, t_dllist **src);
-char		*rotate_all(t_dllist **llist);
-char		*rotate_bll(t_dllist **llist);
-char		*rev_rotate_all(t_dllist **llist);
-char		*rev_rotate_bll(t_dllist **llist);
-char		*swap_all(t_dllist *llist);
-char		*swap_bll(t_dllist *llist);
+char		*push_all(t_llist **dest, t_llist **src);
+char		*push_bll(t_llist **dest, t_llist **src);
+char		*rotate_all(t_llist **llist);
+char		*rotate_bll(t_llist **llist);
+char		*rev_rotate_all(t_llist **llist);
+char		*rev_rotate_bll(t_llist **llist);
+char		*swap_all(t_llist *llist);
+char		*swap_bll(t_llist *llist);
 //////////////////////////////TOOLS\\\\\\\\\\\\\\\\\\\\\\\\\\\/
-char	    *llst_tolst(t_dllist **llst);
-
 void		push(t_list **dest, t_list **src);
 char		*push_a(t_list **dest, t_list **src);
 char		*push_b(t_list **dest, t_list **src);
@@ -67,7 +65,7 @@ char		*rev_rotate_b(t_list **stack);
 
 char		*element_sort(t_list **stack);
 char		*elem_sort_b(t_list **b);
-char		*push_swap(t_list **stack);
+char		*push_swap(t_llist **stack);
 
 int			find_max(t_list *a);
 int			find_min(t_list *a);
@@ -75,6 +73,10 @@ void		del_node(void *tmp);
 
 char	    *sort_b(t_list **a, t_list **b, int min_size);
 char	    *arr_sort(t_list **a);
-char		*sndtimes(t_dllist **a, int scatter);
+char		*sndtimes(t_llist **a, int scatter);
 
 void	    *make_data(int x);
+
+char	    *trivial_sort(t_llist **llst);
+
+double      scatter(int count);

@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:44:48 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/29 14:32:10 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/02 14:51:29 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-void	rotate_ll(t_dllist **llist)
+void	rotate_ll(t_llist **llist)
 {
 	if (!(*llist) || !(*llist)->next)
 		return ;
@@ -51,13 +51,13 @@ char	*rotate_b(t_list **stack)
 	return (ft_strdup(RB));
 }
 
-char	*rotate_all(t_dllist **llist)
+char	*rotate_all(t_llist **llist)
 {
 	rotate_ll(llist);
 	return (ft_strdup(RA));
 }
 
-char	*rotate_bll(t_dllist **llist)
+char	*rotate_bll(t_llist **llist)
 {
 	rotate_ll(llist);
 	return (ft_strdup(RB));

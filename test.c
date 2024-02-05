@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:54:22 by polenyc           #+#    #+#             */
-/*   Updated: 2024/01/29 18:04:27 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/02 14:52:13 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	is_num(t_list *list, int x)
 	return (0);
 }
 
-int	is_numll(t_dllist *list, int x)
+int	is_numll(t_llist *list, int x)
 {
 	while (list)
 	{
@@ -85,10 +85,10 @@ t_list	*crt_randlist(int size)
 	return (list);
 }
 
-t_dllist	*crt_randllist(int size)
+t_llist	*crt_randllist(int size)
 {
 	int			data;
-	t_dllist	*list;
+	t_llist	*list;
 
 	list = NULL;
 	for (int i= 0; i < size; ++i)
@@ -106,8 +106,8 @@ t_dllist	*crt_randllist(int size)
 
 // int	test(int size, int scatter)
 // {
-// 	t_dllist	*list;
-// 	t_dllist	*tmp;
+// 	t_llist	*list;
+// 	t_llist	*tmp;
 // 	int			data;
 // 	int			i;
 // 	char		*oper;
@@ -155,8 +155,8 @@ t_dllist	*crt_randllist(int size)
 
 int	test(int size, int scatter)
 {
-	t_dllist	*list;
-	t_dllist	*tmp;
+	t_llist	*list;
+	t_llist	*tmp;
 	int			data;
 	int			i;
 	char		*oper;
@@ -230,8 +230,8 @@ int	main()
 
 // int	test(int size, int scatter)
 // {
-// 	t_dllist	*list;
-// 	t_dllist	*tmp;
+// 	t_llist	*list;
+// 	t_llist	*tmp;
 // 	int			data;
 // 	int			i;
 // 	char		*oper;

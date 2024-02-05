@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 22:18:11 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/29 18:59:07 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/02 14:51:47 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "push_swap.h"
 #include "sorts_alg/sorts_alg.h"
 
-static int		*make_arr(t_dllist *a, int size)
+static int		*make_arr(t_llist *a, int size)
 {
 	int	*arr;
 	int	*tmp;
@@ -34,9 +34,9 @@ static int		*make_arr(t_dllist *a, int size)
 	return (arr);
 }
 
-int			score_a(t_dllist *a, int num)
+int			score_a(t_llist *a, int num)
 {
-	t_dllist	*tmp;
+	t_llist	*tmp;
 	int			counter;
 	int			size;
 
@@ -59,9 +59,9 @@ int			score_a(t_dllist *a, int num)
 	return (counter);
 }
 
-int			score_b(t_dllist *a, int num)
+int			score_b(t_llist *a, int num)
 {
-	t_dllist	*tmp;
+	t_llist	*tmp;
 	int			counter;
 	int			size;
 
@@ -84,7 +84,7 @@ int			score_b(t_dllist *a, int num)
 	return (counter);
 }
 
-char		*sndt_sort(t_dllist **a, t_dllist **b, int scatt)
+char		*sndt_sort(t_llist **a, t_llist **b, int scatt)
 {
 	char	*oper;
 	int		*arr;
@@ -114,13 +114,13 @@ char		*sndt_sort(t_dllist **a, t_dllist **b, int scatt)
 	return (oper);
 }
 
-char		*sndtimes(t_dllist **a, int scatter)
+char		*sndtimes(t_llist **a, int scatter)
 {
 	char		*oper;
 	int			*arr;
 	int			size;
 	int			i;
-	t_dllist	*b;
+	t_llist	*b;
 
 	b = NULL;
 	oper = sndt_sort(a, &b, scatter);

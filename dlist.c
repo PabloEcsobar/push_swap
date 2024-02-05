@@ -6,18 +6,18 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 22:33:21 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/26 15:33:52 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/02 14:51:21 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "push_swap.h"
 
-t_dllist	*newnode(void *data)
+t_llist	*newnode(void *data)
 {
-	t_dllist	*tmp;
+	t_llist	*tmp;
 
-	tmp = malloc(sizeof(t_dllist));
+	tmp = malloc(sizeof(t_llist));
 	if (!tmp)
 		return (NULL);
 	tmp->data = data;
@@ -26,9 +26,9 @@ t_dllist	*newnode(void *data)
 	return (tmp);
 }
 
-t_dllist	*add_back(t_dllist **llist, t_dllist *new)
+t_llist	*add_back(t_llist **llist, t_llist *new)
 {
-	t_dllist	*last;
+	t_llist	*last;
 
 	if (!new)
 		return (NULL);
@@ -50,7 +50,7 @@ t_dllist	*add_back(t_dllist **llist, t_dllist *new)
 	return (*llist);
 }
 
-t_dllist	*add_front(t_dllist **llist, t_dllist *new)
+t_llist	*add_front(t_llist **llist, t_llist *new)
 {
 	if (!new)
 		return (NULL);
@@ -67,7 +67,7 @@ t_dllist	*add_front(t_dllist **llist, t_dllist *new)
 	return (*llist);
 }
 
-void		*llist_clear(t_dllist **llist, void (*del)(void *d))
+void		*llist_clear(t_llist **llist, void (*del)(void *d))
 {
 	if (*llist)
 		return (NULL);
@@ -78,7 +78,7 @@ void		*llist_clear(t_dllist **llist, void (*del)(void *d))
 	return (NULL);
 }
 
-int			llist_size(t_dllist *llist)
+int			llist_size(t_llist *llist)
 {
 	int			size;
 

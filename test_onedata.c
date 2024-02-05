@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 19:05:58 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/30 15:26:04 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/02 14:52:05 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	del_node(void *tmp)
 	free(tmp);
 }
 
-int	is_numll(t_dllist *list, int x)
+int	is_numll(t_llist *list, int x)
 {
 	while (list)
 	{
@@ -55,10 +55,10 @@ int	matrix(char *oper)
 	return (count);
 }
 
-t_dllist	*crt_randllist(int size)
+t_llist	*crt_randllist(int size)
 {
 	int			data;
-	t_dllist	*list;
+	t_llist	*list;
 
 	list = NULL;
 	for (int i= 0; i < size; ++i)
@@ -74,10 +74,10 @@ t_dllist	*crt_randllist(int size)
 	return (list);
 }
 
-t_dllist	*crt_arrllist(int size)
+t_llist	*crt_arrllist(int size)
 {
 	int			data;
-	t_dllist	*list;
+	t_llist	*list;
 
 	list = NULL;
     data = rand() % 1000;
@@ -86,9 +86,9 @@ t_dllist	*crt_arrllist(int size)
 	return (list);
 }
 
-t_dllist	*llistcpy(t_dllist *list)
+t_llist	*llistcpy(t_llist *list)
 {
-    t_dllist    *res;
+    t_llist    *res;
 
 	res = NULL;
     while (list)
@@ -99,9 +99,9 @@ t_dllist	*llistcpy(t_dllist *list)
     return (res);
 }
 
-int		found_n(t_dllist *a, t_dllist *b)
+int		found_n(t_llist *a, t_llist *b)
 {
-	t_dllist	*tmp;
+	t_llist	*tmp;
 
 	if (!b && !a)
 		return (1);
@@ -119,9 +119,9 @@ int		found_n(t_dllist *a, t_dllist *b)
 	return (1);
 }
 
-int			llstcmp(t_dllist *a, t_dllist *b)
+int			llstcmp(t_llist *a, t_llist *b)
 {
-	t_dllist	*tmp;
+	t_llist	*tmp;
 	
 	if (!b && !a)
 		return (1);
@@ -139,7 +139,7 @@ int			llstcmp(t_dllist *a, t_dllist *b)
 	return (1);
 }
 
-int	bad_func(t_dllist **a, t_dllist **b, char *msg, void (*del)(void *))
+int	bad_func(t_llist **a, t_llist **b, char *msg, void (*del)(void *))
 {
 	printf("%s\n", msg);
 	llist_clear(a, del);
@@ -147,9 +147,9 @@ int	bad_func(t_dllist **a, t_dllist **b, char *msg, void (*del)(void *))
 	return (-1);
 }
 
-int	test(t_dllist *list, int scatter, void (*del)(void *))
+int	test(t_llist *list, int scatter, void (*del)(void *))
 {
-	t_dllist	*tmp;
+	t_llist	*tmp;
 	int			data;
 	char		*oper;
 	int			count;
@@ -177,7 +177,7 @@ int	test(t_dllist *list, int scatter, void (*del)(void *))
 	return (count);
 }
 
-void	*bad_test(t_dllist **list, float **arr, void (*del)(void *))
+void	*bad_test(t_llist **list, float **arr, void (*del)(void *))
 {
 	float	**tmp;
 
@@ -218,7 +218,7 @@ float	**test_for_scat(int count, int size, int sc_min, int sc_max)
 	int			j;
 	int			tmp;
 	float		**matrix;
-	t_dllist	*original;
+	t_llist	*original;
 
 	matrix = crtmatrix(sc_max - sc_min + 1, 2);
 	i = 0;

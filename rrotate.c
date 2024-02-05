@@ -6,14 +6,14 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:48:02 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/29 14:33:05 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/02 14:51:38 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "push_swap.h"
 
-void	rev_rotate_ll(t_dllist **llist)
+void	rev_rotate_ll(t_llist **llist)
 {
 	if (!(*llist) || !(*llist)->next)
 		return ;
@@ -50,13 +50,13 @@ char	*rev_rotate_b(t_list **stack)
 	return (ft_strdup(RRB));
 }
 
-char	*rev_rotate_all(t_dllist **llist)
+char	*rev_rotate_all(t_llist **llist)
 {
 	rev_rotate_ll(llist);
 	return (ft_strdup(RRA));
 }
 
-char	*rev_rotate_bll(t_dllist **llist)
+char	*rev_rotate_bll(t_llist **llist)
 {
 	rev_rotate_ll(llist);
 	return (ft_strdup(RRB));

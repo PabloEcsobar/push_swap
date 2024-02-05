@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:40:22 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/29 14:46:18 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/02 14:51:16 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-void	push_ll(t_dllist **dest, t_dllist **src)
+void	push_ll(t_llist **dest, t_llist **src)
 {
-	t_dllist	*tmp;
+	t_llist	*tmp;
 
 	if (!(*src))
 		return ;
@@ -61,13 +61,13 @@ char	*push_b(t_list **dest, t_list **src)
 	return (ft_strdup(PB));
 }
 
-char	*push_all(t_dllist **dest, t_dllist **src)
+char	*push_all(t_llist **dest, t_llist **src)
 {
 	push_ll(dest, src);
 	return (ft_strdup(PA));
 }
 
-char	*push_bll(t_dllist **dest, t_dllist **src)
+char	*push_bll(t_llist **dest, t_llist **src)
 {
 	push_ll(dest, src);
 	return (ft_strdup(PB));
