@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   element_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:53:40 by polenyc           #+#    #+#             */
-/*   Updated: 2024/01/24 13:51:07 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/05 14:08:45 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ char	*put_max(t_list **a, int max, int size, int pos)
 char	*element_sort(t_list **a)
 {
 	char	*operation;
-	t_list	*tmp;
 	int		size;
 
 	size = ft_lstsize(*a);

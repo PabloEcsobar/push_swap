@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dlist.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 22:33:21 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/02 14:51:21 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/05 14:08:27 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ t_llist	*newnode(void *data)
 
 t_llist	*add_back(t_llist **llist, t_llist *new)
 {
-	t_llist	*last;
-
 	if (!new)
 		return (NULL);
 	new->next = NULL;

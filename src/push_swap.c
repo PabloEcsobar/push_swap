@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:22:40 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/05 12:39:51 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/05 14:07:29 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <time.h>
 #include "push_swap.h"
-#include "ft_pow/ft_pow.h"
+#include "../ft_pow/ft_pow.h"
 
 t_list	*llst_tolst(t_llist *llst)
 {

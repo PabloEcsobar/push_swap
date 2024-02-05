@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   arr_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:05:37 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/26 15:12:51 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/05 14:07:16 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "sorts_alg/sorts_alg.h"
+#include "../sorts_alg/sorts_alg.h"
 #include <stdlib.h>
 #include <stdio.h>
 

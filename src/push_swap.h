@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/02 15:18:36 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/05 14:08:00 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define RRB	"rrb\n"
 # define RRR	"rrr\n"
 
-#include "ft_printf/libft/libft.h"
+#include "../ft_printf/libft/libft.h"
 
 typedef struct			s_llist
 {

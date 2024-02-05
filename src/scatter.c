@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   scatter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:10:36 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/05 12:28:07 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/05 14:07:44 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_pow/ft_pow.h"
+#include "../ft_pow/ft_pow.h"
 #include <stdio.h>
 
 double	scatter(int count)

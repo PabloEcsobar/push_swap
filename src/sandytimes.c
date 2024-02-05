@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   sandytimes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 22:18:11 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/02 14:51:47 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/05 14:07:38 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <time.h>
 #include "push_swap.h"
-#include "sorts_alg/sorts_alg.h"
+#include "../sorts_alg/sorts_alg.h"
 
 static int		*make_arr(t_llist *a, int size)
 {
