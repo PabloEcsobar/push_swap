@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 19:05:58 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/02 14:52:05 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/05 12:37:05 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,16 +149,17 @@ int	bad_func(t_llist **a, t_llist **b, char *msg, void (*del)(void *))
 
 int	test(t_llist *list, int scatter, void (*del)(void *))
 {
-	t_llist	*tmp;
+	t_llist		*tmp;
 	int			data;
 	char		*oper;
 	int			count;
 
 	tmp = llistcpy(list);
-	if (llist_size(list) < 10)
-		oper = llst_tolst(&list);
-	else
-		oper = sndtimes(&list, scatter);
+	// if (llist_size(list) < 10)
+	// 	oper = llst_tolst(&list);
+	// else
+	// 	oper = sndtimes(&list, scatter);
+	oper = push_swap(&list);
 	// printf("INSTRUCTION:\n%s", oper);
 	if (!llstcmp(tmp, list))
 		return (bad_func(&list, &tmp, "ERROR!!! BAD SORT ALGORITHM!!!", del));
