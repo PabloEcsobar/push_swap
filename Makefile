@@ -6,13 +6,14 @@
 #    By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/05 12:43:58 by polenyc           #+#    #+#              #
-#    Updated: 2024/02/05 16:34:42 by polenyc          ###   ########.fr        #
+#    Updated: 2024/02/06 14:12:47 by polenyc          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libpush_swap.a
 TEST = test
 TMP = libtmp.a
+LIBS = libs
 
 FILES = arr_sort.c dlist.c element_sort.c push_swap.c push.c rotate.c rrotate.c \
 	swap.c sandytimes.c scatter.c trivial_sort.c \
@@ -50,14 +51,16 @@ LSORTA = -L$(SORTADIR) -l$(SORTA)
 all: $(NAME)
   
 $(NAME): $(OBJ) $(TMP)
-	ar -rc $(NAME) $(TMP) $(OBJ)
+	ar -rc $(NAME) *.o $(OBJ)
 	ranlib $(NAME)
+	rm -f *.o __.SYMDEF\ SORTED
 
 $(TMP): $(FTPOW) $(FTPRINTF) $(GNL) $(SORTA)
-	ar -rc $(TMP) $(FTPRINTFDIR)/lib$(FTPRINTF).a $(FTPOWDIR)/lib$(FTPOW).a $(GNLDIR)/lib$(GNL).a $(SORTADIR)/lib$(SORTA).a
-	ranlib $(TMP)
+	ar -x $(FTPRINTFDIR)/lib$(FTPRINTF).a
+	ar -x $(FTPOWDIR)/lib$(FTPOW).a
+	ar -x $(GNLDIR)/lib$(GNL).a
+	ar -x $(SORTADIR)/lib$(SORTA).a
 	
-
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGSO) $< -o $@
@@ -75,7 +78,7 @@ $(SORTA):
 	$(MAKE) -C $(SORTADIR)
 
 $(TEST): $(NAME)
-	$(CC) $(TST) -o $@ -L. -lpush_swap
+	$(CC) $(TST) $(NAME) -o $@
 	
 test: $(TEST)
 
@@ -84,17 +87,19 @@ clean:
 	$(MAKE) -C $(FTPRINTFDIR) clean
 	$(MAKE) -C $(GNLDIR) clean
 	$(MAKE) -C $(SORTADIR) clean
-	rm -rf $(OBJDIR)
+	rm -f *.o __.SYMDEF\ SORTED
+	rm -rf $(OBJDIR) $(LIBS)
 
 fclean: clean
 	$(MAKE) -C $(FTPOWDIR) fclean
 	$(MAKE) -C $(FTPRINTFDIR) fclean
 	$(MAKE) -C $(GNLDIR) fclean
 	$(MAKE) -C $(SORTADIR) fclean
-	rm -f $(NAME)
+	rm -f $(NAME) $(TEST)
 
 re: fclean all
 
-
+run: $(TEST)
+	./$(TEST)
 
 	

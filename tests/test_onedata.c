@@ -6,7 +6,7 @@
 /*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 19:05:58 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/05 16:29:51 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/06 13:20:02 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,8 +199,8 @@ float	**crtmatrix(int count, int size)
 	float	**arr;
 
 	arr = malloc((count + 1) * sizeof(float *));
-	if (!matrix)
-		return (NULL);
+	// if (!matrix)
+	// 	return (NULL);
 	i = 0;
 	while (i < count)
 	{
