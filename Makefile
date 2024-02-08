@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+         #
+#    By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/05 12:43:58 by polenyc           #+#    #+#              #
-#    Updated: 2024/02/06 14:12:47 by polenyc          ###   ########.fr        #
+#    Updated: 2024/02/07 14:28:09 by blackrider       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ $(SORTA):
 $(TEST): $(NAME)
 	$(CC) $(TST) $(NAME) -o $@
 	
-test: $(TEST)
+tst: $(TEST)
 
 clean:
 	$(MAKE) -C $(FTPOWDIR) clean
