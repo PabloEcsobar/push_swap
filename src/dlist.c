@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dlist.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
+/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 22:33:21 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/05 14:08:27 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/08 21:18:50 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_llist	*add_front(t_llist **llist, t_llist *new)
 
 void		*llist_clear(t_llist **llist, void (*del)(void *d))
 {
-	if (*llist)
+	if (!(*llist))
 		return (NULL);
 	llist_clear(&((*llist)->next), del);
 	del((*llist)->data);	

@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/08 13:39:25 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/08 19:03:00 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define RRA	"rra\n"
 # define RRB	"rrb\n"
 # define RRR	"rrr\n"
+# define SPACE  ' '
 
 #include "../ft_printf/libft/libft.h"
 
@@ -53,7 +54,7 @@ char		*rev_rotate_bll(t_llist **llist);
 void	    swap_ll(t_llist *llist);
 char		*swap_all(t_llist *llist);
 char		*swap_bll(t_llist *llist);
-//////////////////////////////TOOLS\\\\\\\\\\\\\\\\\\\\\\\\\\\/
+//////////////////////////////TOOLS LIST\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 void		push(t_list **dest, t_list **src);
 char		*push_a(t_list **dest, t_list **src);
 char		*push_b(t_list **dest, t_list **src);
@@ -66,21 +67,17 @@ char		*rotate_b(t_list **stack);
 void		rev_rotate(t_list **stack);
 char		*rev_rotate_a(t_list **stack);
 char		*rev_rotate_b(t_list **stack);
-
+//////////////////////////////SORT STACK\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 char		*element_sort(t_list **stack);
 char		*elem_sort_b(t_list **b);
 char		*push_swap(t_llist **stack);
-
 int			find_max(t_list *a);
 int			find_min(t_list *a);
-void		del_node(void *tmp);
-
 char	    *sort_b(t_list **a, t_list **b, int min_size);
 char	    *arr_sort(t_list **a);
 char		*sndtimes(t_llist **a, int scatter);
-
-void	    *make_data(int x);
-
 char	    *trivial_sort(t_llist **llst);
-
+//////////////////////////////TOOLS\\\\\\\\\\\\\\\\\\\\\\\\\\\/
+void	    *make_data(int x);
 double      scatter(int count);
+void		del_node(void *tmp);

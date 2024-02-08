@@ -6,7 +6,7 @@
 #    By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/05 12:43:58 by polenyc           #+#    #+#              #
-#    Updated: 2024/02/08 13:40:42 by blackrider       ###   ########.fr        #
+#    Updated: 2024/02/08 17:41:05 by blackrider       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ LIBS = libs
 
 FILES = arr_sort.c dlist.c element_sort.c push_swap.c push.c rotate.c rrotate.c \
 	swap.c sandytimes.c scatter.c trivial_sort.c stacktools_l.c stacktools_ll.c \
+	tools.c \
 	
 TESTFILE = test_onedata.c
 
