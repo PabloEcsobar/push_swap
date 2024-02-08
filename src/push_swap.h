@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
+/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/05 14:08:00 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/08 13:39:25 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,31 @@ t_llist	    *add_front(t_llist **llist, t_llist *new);
 void		*llist_clear(t_llist **llist, void (*del)(void *d));
 int			llist_size(t_llist *llist);
 //////////////////////////////TOOLS LLIST\\\\\\\\\\\\\\\\\\\\\\\\\\\/
+void	    push_ll(t_llist **dest, t_llist **src);
 char		*push_all(t_llist **dest, t_llist **src);
 char		*push_bll(t_llist **dest, t_llist **src);
+
+void	    rotate_ll(t_llist **llist);
 char		*rotate_all(t_llist **llist);
 char		*rotate_bll(t_llist **llist);
+
+void	    rev_rotate_ll(t_llist **llist);
 char		*rev_rotate_all(t_llist **llist);
 char		*rev_rotate_bll(t_llist **llist);
+
+void	    swap_ll(t_llist *llist);
 char		*swap_all(t_llist *llist);
 char		*swap_bll(t_llist *llist);
 //////////////////////////////TOOLS\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 void		push(t_list **dest, t_list **src);
 char		*push_a(t_list **dest, t_list **src);
 char		*push_b(t_list **dest, t_list **src);
-
 void		swap_tl(t_list *stack);
 char		*swap_a(t_list *stack);
 char		*swap_b(t_list *stack);
-
 void		rotate(t_list **stack);
 char		*rotate_a(t_list **stack);
 char		*rotate_b(t_list **stack);
-
 void		rev_rotate(t_list **stack);
 char		*rev_rotate_a(t_list **stack);
 char		*rev_rotate_b(t_list **stack);
