@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:22:40 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/09 14:19:07 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/09 15:11:24 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <time.h>
 #include "push_swap.h"
 #include "../ft_pow/ft_pow.h"
+#include "../ft_printf/headers/ft_printf_bonus.h"
 
 t_list	*llst_tolst(t_llist *llst)
 {

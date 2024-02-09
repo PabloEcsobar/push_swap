@@ -6,23 +6,23 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/08 19:03:00 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/09 14:44:10 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-# define SA		"sa\n"
-# define SB		"sb\n"
-# define SS 	"ss\n"
-# define PA 	"pa\n"
-# define PB 	"pb\n"
-# define RA 	"ra\n"
-# define RB		"rb\n"
-# define RR 	"rr\n"
-# define RRA	"rra\n"
-# define RRB	"rrb\n"
-# define RRR	"rrr\n"
-# define SPACE  ' '
+# define SA			"sa\n"
+# define SB			"sb\n"
+# define SS			"ss\n"
+# define PA			"pa\n"
+# define PB			"pb\n"
+# define RA			"ra\n"
+# define RB			"rb\n"
+# define RR			"rr\n"
+# define RRA		"rra\n"
+# define RRB		"rrb\n"
+# define RRR		"rrr\n"
+# define SPACE_S	' '
 
 #include "../ft_printf/libft/libft.h"
 
