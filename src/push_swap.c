@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
+/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:22:40 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/05 14:07:29 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/09 14:19:07 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_llist	*lst_tollst(t_list *lst)
 {
 	t_llist	*llst;
 
+	llst = NULL;
 	while (lst)
 	{
 		add_back(&llst, newnode(make_data(*(int *)(lst->content))));
@@ -48,9 +49,9 @@ char	*trivial_sort(t_llist **llst)
 	lst = llst_tolst(*llst);
 	b = NULL;
 	oper = sort_b(&lst, &b, 3);
-	ft_lstclear(&b, &del_node);
 	llist_clear(llst, &del_node);
 	*llst = lst_tollst(lst);
+	ft_lstclear(&b, &del_node);
 	ft_lstclear(&lst, &del_node);
 	return (oper);
 }

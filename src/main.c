@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:07:40 by polenyc           #+#    #+#             */
-/*   Updated: 2024/02/08 21:39:18 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/09 14:19:04 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,104 @@ int		checkstr(char *str)
 	return (1);
 }
 
-t_llist	*make_list(char **argv)
+void	*freematrix(char **mat)
+{
+	char	**tmp;
+
+	tmp = mat;
+	while (*mat)
+	{
+		free(*mat);
+		++mat;
+	}
+	free(tmp);
+	return (NULL);
+}
+
+t_llist	*make_list(int argc, char **argv)
 {
 	t_llist	*llst;
+	char	**tmp;
+	int		i;
 
 	llst = NULL;
-	++argv;
-	while (*argv)
+	if (argc == 2)
+		tmp = ft_split(argv[1], SPACE);
+	else
+		tmp = argv + 1;
+	i = 0;
+	while (tmp[i])
 	{
-		if (!checkstr(*argv))
+		if (!checkstr(tmp[i]))
 			return (llist_clear(&llst, &del_node));
-		llst = add_back(&llst, newnode(make_data(ft_atoi(*argv))));
-		++argv;
+		llst = add_back(&llst, newnode(make_data(ft_atoi(tmp[i]))));
+		++i;
 	}
+	if (argc == 2)
+		freematrix(tmp);
 	return (llst);
+}
+
+int		checksort(t_llist *llst)
+{
+	int	data;
+
+	data = *(int *)(llst->data);
+	llst = llst->next;
+	while (llst)
+	{
+		if (data >= *(int *)(llst->data))
+			return (0);
+		data = *(int *)(llst->data);
+		llst = llst->next;
+	}
+	return (1);
+}
+
+int		main(int argc, char **argv)
+{
+	t_llist	*llst;
+	t_llist	*tmp;
+	char	*oper;
+	int		i;
+	char	buffer[1024];
+	int		size;
+
+	i = 0;
+	// argv = ft_split(*(argv + 1), SPACE);
+	while (argv[i])
+	{
+		printf("argv[%d]: %s\n", i, argv[i]);
+		++i;
+	}
+	llst = make_list(argc, argv);
+	if (!llst)
+	{
+		printf("ERROR!!!\n");
+		llist_clear(&llst, &del_node);
+		return (-1);
+	}
+	tmp = llst;
+	while (llst)
+	{
+		printf("result: %d\n", *(int *)(llst->data));
+		llst = llst->next;
+	}
+	llst = tmp;
+	oper = push_swap(&llst);
+	printf("out sort\n");
+	// if (!oper || !checksort(llst))
+	// {
+	// 	printf("ERROR!!!\n");
+	// 	llist_clear(&llst, &del_node);
+	// 	return (-1);
+	// }
+	while (llst)
+	{
+		printf("result: %d\n", *(int *)(llst->data));
+		llst = llst->next;
+	}
+	return (0);
 }
 
 // int		main(void)
@@ -78,7 +162,8 @@ t_llist	*make_list(char **argv)
 // 	char	**argv;
 // 	char	buffer[1024];
 // 	int		size = 2;
-// 	char	tmp;
+// 	t_llist	*tmp;
+// 	char	*oper;
 
 // 	printf("Enter count of number:\t");
 // 	scanf("%d", &size);
@@ -93,8 +178,8 @@ t_llist	*make_list(char **argv)
 // 		scanf("%s", buffer);
 // 		argv[i] = malloc((ft_strlen(buffer) + 1) * sizeof(char));
 // 		ft_strcpy(argv[i], buffer);
-// 		if (i == 1)
-// 			argv[i] = ft_strjoinfree(" ", argv[i], 1);
+// 		// if (i == 1)
+// 			// argv[i] = ft_strjoinfree(" ", argv[i], 1);
 // 		++i;
 // 	}
 // 	argv[size] = NULL;
@@ -104,9 +189,34 @@ t_llist	*make_list(char **argv)
 // 		printf("argv[%d]: %s\n", i, argv[i]);
 // 		++i;
 // 	}
-// 	llst = make_list(argv);
+// 	llst = make_list(size + 1, argv);
 // 	if (!llst)
-// 		printf("Error data!!!\n");
+// 	{
+// 		printf("ERROR!!!\n");
+// 		llist_clear(&llst, &del_node);
+// 		return (-1);
+// 	}
+// 	tmp = llst;
+// 	while (llst)
+// 	{
+// 		printf("result: %d\n", *(int *)(llst->data));
+// 		llst = llst->next;
+// 	}
+// 	llst = tmp;
+// 	oper = push_swap(&llst);
+// 	tmp = llst;
+// 	while (llst)
+// 	{
+// 		printf("result sorting: %d\n", *(int *)(llst->data));
+// 		llst = llst->next;
+// 	}
+// 	llst = tmp;
+// 	if (!oper || !checksort(llst))
+// 	{
+// 		printf("ERROR!!!\n");
+// 		llist_clear(&llst, &del_node);
+// 		return (-1);
+// 	}
 // 	while (llst)
 // 	{
 // 		printf("result: %d\n", *(int *)(llst->data));
@@ -114,28 +224,3 @@ t_llist	*make_list(char **argv)
 // 	}
 // 	return (0);
 // }
-
-int		main(int argc, char **argv)
-{
-	t_llist	*llst;
-	int		i;
-	char	buffer[1024];
-	int		size;
-
-	i = 0;
-	// argv = ft_split(*(argv + 1), SPACE);
-	while (i < size)
-	{
-		printf("argv[%d]: %s\n", i, argv[i]);
-		++i;
-	}
-	llst = make_list(argv);
-	if (!llst)
-		printf("Error data!!!\n");
-	while (llst)
-	{
-		printf("result: %d\n", *(int *)(llst->data));
-		llst = llst->next;
-	}
-	return (0);
-}

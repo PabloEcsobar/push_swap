@@ -6,12 +6,13 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 22:33:21 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/08 21:18:50 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/09 14:18:50 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "push_swap.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 t_llist	*newnode(void *data)
 {
