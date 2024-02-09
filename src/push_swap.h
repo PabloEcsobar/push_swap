@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/09 20:03:15 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/09 20:41:37 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ char		*rev_rotate_bll(t_llist **llist);
 void	    swap_ll(t_llist *llist);
 char		*swap_all(t_llist *llist);
 char		*swap_bll(t_llist *llist);
+
+t_llist		*make_list(int argc, char **argv);
 //////////////////////////////TOOLS LIST\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 void		push(t_list **dest, t_list **src);
 char		*push_a(t_list **dest, t_list **src);
