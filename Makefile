@@ -6,7 +6,7 @@
 #    By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/05 12:43:58 by polenyc           #+#    #+#              #
-#    Updated: 2024/02/08 17:41:05 by blackrider       ###   ########.fr        #
+#    Updated: 2024/02/09 20:05:01 by blackrider       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ TESTDIR = tests
 SRCDIR = src
 OBJDIR = $(SRCDIR)/objs
 
-SRC = $(addprefix $(SRCDIR)/, $(FILES))
+# SRC = $(addprefix $(SRCDIR)/, $(FILES))
+SRC = $(wildcard $(SRCDIR)/*.c)
 OBJ = $(SRC:$(SRCDIR)%.c=$(OBJDIR)/%.o)
 
 TST = $(addprefix $(TESTDIR)/, $(TESTFILE))

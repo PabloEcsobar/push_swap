@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/09 14:44:10 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/09 20:03:15 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef struct			s_llist
     struct s_llist		*next;
     struct s_llist		*previos;
 }						t_llist;
+
+int	        pushswapapp(int argc, char **argv);
+
 //////////////////////////////LLIST\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 t_llist	    *newnode(void *data);
 t_llist	    *add_back(t_llist **llist, t_llist *new);
@@ -81,3 +84,6 @@ char	    *trivial_sort(t_llist **llst);
 void	    *make_data(int x);
 double      scatter(int count);
 void		del_node(void *tmp);
+int	        dataerror(char *msg);
+int		    issign(char ch);
+void	    *freematrix(char **mat);

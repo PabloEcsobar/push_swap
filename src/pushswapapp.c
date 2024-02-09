@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pushswapapp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:07:40 by polenyc           #+#    #+#             */
-/*   Updated: 2024/02/09 15:12:30 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/09 20:05:34 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 #include "../ft_printf/headers/ft_printf_bonus.h"
 #include <stdlib.h>
 #include <stdio.h>
-
-int		issign(char ch)
-{
-	if (ch != '+' && ch != '-')
-		return (0);
-	return (1);
-}
 
 int		checksuf(char *num)
 {
@@ -35,8 +28,6 @@ int		checksuf(char *num)
 
 int		checkstr(char *str)
 {
-	int		var;
-
 	if (!ft_isdigit(*str) && !issign(*str))
 		return (0);
 	++str;
@@ -54,20 +45,6 @@ int		checkstr(char *str)
 		}
 	}
 	return (1);
-}
-
-void	*freematrix(char **mat)
-{
-	char	**tmp;
-
-	tmp = mat;
-	while (*mat)
-	{
-		free(*mat);
-		++mat;
-	}
-	free(tmp);
-	return (NULL);
 }
 
 t_llist	*make_list(int argc, char **argv)
@@ -110,31 +87,26 @@ int		checksort(t_llist *llst)
 	return (1);
 }
 
-static int	error(char *msg)
-{
-	ft_printf("%s\n", msg);
-	return (-1);
-}
-
-int		main(int argc, char **argv)
+int	pushswapapp(int argc, char **argv)
 {
 	t_llist	*llst;
 	char	*oper;
 
 	if (argc < 2)
-		return (error("ERROR!!!"));
+		return (dataerror("ERROR!!!"));
 	llst = make_list(argc, argv);
 	if (!llst)
-		return (error("ERROR!!!"));
+		return (dataerror("ERROR!!!"));
 	oper = push_swap(&llst);
 	if (!oper || !checksort(llst))
 	{
 		llist_clear(&llst, &del_node);
-		return (error("ERROR!!!"));
+		return (dataerror("ERROR!!!"));
 	}
 	ft_printf("%s", oper);
 	llist_clear(&llst, &del_node);
-	return (0);
+	free(oper);
+	return (1);
 }
 
 // int		main(int argc, char **argv)
