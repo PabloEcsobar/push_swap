@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:07:40 by polenyc           #+#    #+#             */
-/*   Updated: 2024/02/09 20:05:34 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/12 14:58:28 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,24 +87,23 @@ int		checksort(t_llist *llst)
 	return (1);
 }
 
-int	pushswapapp(int argc, char **argv)
+int	pushswapapp(t_llist **a, t_llist **b, int argc, char **argv)
 {
-	t_llist	*llst;
 	char	*oper;
 
 	if (argc < 2)
 		return (dataerror("ERROR!!!"));
-	llst = make_list(argc, argv);
-	if (!llst)
+	*a = make_list(argc, argv);
+	if (!*a)
 		return (dataerror("ERROR!!!"));
-	oper = push_swap(&llst);
-	if (!oper || !checksort(llst))
+	oper = push_swap(a, b);
+	if (!oper || !checksort(*a))
 	{
-		llist_clear(&llst, &del_node);
+		llist_clear(a, &del_node);
 		return (dataerror("ERROR!!!"));
 	}
 	ft_printf("%s", oper);
-	llist_clear(&llst, &del_node);
+	llist_clear(a, &del_node);
 	free(oper);
 	return (1);
 }

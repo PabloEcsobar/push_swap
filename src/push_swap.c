@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:22:40 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/09 15:11:24 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/12 14:59:25 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,30 +41,31 @@ t_llist	*lst_tollst(t_list *lst)
 	return (llst);
 }
 
-char	*trivial_sort(t_llist **llst)
+char	*trivial_sort(t_llist **llst, t_llist **b)
 {
 	t_list		*lst;
-	t_list		*b;
+	t_list		*b_tmp;
 	char		*oper;
 
 	lst = llst_tolst(*llst);
-	b = NULL;
-	oper = sort_b(&lst, &b, 3);
+	b_tmp = NULL;
+	oper = sort_b(&lst, &b_tmp, 3);
 	llist_clear(llst, &del_node);
 	*llst = lst_tollst(lst);
-	ft_lstclear(&b, &del_node);
+	ft_lstclear(&b_tmp, &del_node);
+	llist_clear(b, &del_node);
 	ft_lstclear(&lst, &del_node);
 	return (oper);
 }
 
-char	*push_swap(t_llist **a)
+char	*push_swap(t_llist **a, t_llist **b)
 {
 	char	*oper;
 
 	if (!a || !(*a))
 		return (NULL);
 	if (llist_size(*a) < 10)
-		return (trivial_sort(a));
-	oper = sndtimes(a, round_num(scatter(llist_size(*a))));
+		return (trivial_sort(a, b));
+	oper = sndtimes(a, b, round_num(scatter(llist_size(*a))));
 	return (oper);
 }

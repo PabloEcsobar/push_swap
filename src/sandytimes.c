@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 22:18:11 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/08 14:36:49 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/12 15:04:42 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,25 +153,24 @@ char		*findcorel_b(t_llist **b, int *arr, int i)
 	return (oper);
 }
 
-char		*sndtimes(t_llist **a, int scatter)
+char		*sndtimes(t_llist **a, t_llist **b, int scatter)
 {
 	char		*oper;
 	int			*arr;
 	int			size;
 	int			i;
-	t_llist		*b;
 
-	b = NULL;
-	oper = sndt_sort(a, &b, scatter);
-	size = llist_size(b);
-	arr = make_arr(b, size);
+	oper = sndt_sort(a, b, scatter);
+	size = llist_size(*b);
+	arr = make_arr(*b, size);
 	i = 1;
-	while (b && i <= size)
+	while (*b && i <= size)
 	{
-		oper = ft_strjoinfree(oper, findcorel_b(&b, arr, size - i), 2);
-		oper = ft_strjoinfree(oper, push_all(a, &b), 2);
+		oper = ft_strjoinfree(oper, findcorel_b(b, arr, size - i), 2);
+		oper = ft_strjoinfree(oper, push_all(a, b), 2);
 		++i;
 	}
 	free(arr);
+	llist_clear(b, &del_node);
 	return (oper);
 }

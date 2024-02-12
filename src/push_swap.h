@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/09 20:41:37 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/12 14:56:52 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct			s_llist
     struct s_llist		*previos;
 }						t_llist;
 
-int	        pushswapapp(int argc, char **argv);
+int	        pushswapapp(t_llist **a, t_llist **b, int argc, char **argv);
 
 //////////////////////////////LLIST\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 t_llist	    *newnode(void *data);
@@ -75,13 +75,13 @@ char		*rev_rotate_b(t_list **stack);
 //////////////////////////////SORT STACK\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 char		*element_sort(t_list **stack);
 char		*elem_sort_b(t_list **b);
-char		*push_swap(t_llist **stack);
+char	    *push_swap(t_llist **a, t_llist **b);
 int			find_max(t_list *a);
 int			find_min(t_list *a);
 char	    *sort_b(t_list **a, t_list **b, int min_size);
 char	    *arr_sort(t_list **a);
-char		*sndtimes(t_llist **a, int scatter);
-char	    *trivial_sort(t_llist **llst);
+char		*sndtimes(t_llist **a, t_llist **b, int scatter);
+char	    *trivial_sort(t_llist **a, t_llist **b);
 //////////////////////////////TOOLS\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 void	    *make_data(int x);
 double      scatter(int count);
