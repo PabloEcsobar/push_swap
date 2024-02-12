@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/12 14:56:52 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/12 21:42:20 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,3 +89,4 @@ void		del_node(void *tmp);
 int	        dataerror(char *msg);
 int		    issign(char ch);
 void	    *freematrix(char **mat);
+int		    checksort(t_llist *llst);

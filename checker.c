@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 20:11:27 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/09 21:29:02 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/12 22:02:24 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,58 @@
 #include "get_next_line/get_next_line_bonus.h"
 #include "ft_printf/headers/ft_printf_bonus.h"
 #include <stdlib.h>
-#include <unistd.h>
+#include <stdio.h>
 
-int     checker(int argc, char **argv)
+char	*applyoper(t_llist **a, t_llist **b, char *oper)
 {
-    t_llist	*llst;
-	char	*oper;
-	char	*tmp;
-
-	llst = make_list(argc, argv);
-	if (!llst)
-		return (-1);
-	oper = NULL;
-	tmp = get_next_line(0);
-	pushswapapp(argc, argv);
-	while (tmp)
-	{
-		ft_printf("result: %s", tmp);
-		oper = ft_strjoinfree(oper, tmp, 2);
-		tmp = get_next_line(0);
-	}
-	ft_printf("result: %s", tmp);
+	if (!ft_strcmp(oper, RA))
+		return (rotate_all(a));
+	if (!ft_strcmp(oper, RB))
+		return (rotate_bll(b));
+	if (!ft_strcmp(oper, PA))
+		return (push_all(a, b));
+	if (!ft_strcmp(oper, PB))
+		return (push_bll(b, a));
+	if (!ft_strcmp(oper, RRA))
+		return (rev_rotate_all(a));
+	if (!ft_strcmp(oper, RRB))
+		return (rev_rotate_bll(b));
+	if (!ft_strcmp(oper, SA))
+		return (swap_all(*a));
+	if (!ft_strcmp(oper, SB))
+		return (swap_bll(*b));
+	return (NULL);
 }
 
 int     main(int argc, char **argv)
 {
-    checker(argc, argv);
+    char	*oper;
+	char	*tmp;
+	t_llist *a;
+	t_llist *b;
+	int		i;
+
+	a = make_list(argc, argv);
+	b = NULL;
+	if (!a)
+		return (-1);
+	oper = get_next_line(0);
+	i = 0;
+	while (oper)
+	{
+		applyoper(&a, &b, oper);
+		free(oper);
+		oper = get_next_line(0);
+		++i;
+	}
+	if (!checksort(a) || b)
+	{
+		llist_clear(&a, &del_node);
+		llist_clear(&b, &del_node);
+		return (dataerror("KO"));
+	}
+	ft_printf("count of operation: %d\n", i);
+	ft_printf("OK\n");
+	llist_clear(&a, &del_node);
     return (0);
 }
