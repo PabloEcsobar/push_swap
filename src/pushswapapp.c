@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswapapp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:07:40 by polenyc           #+#    #+#             */
-/*   Updated: 2024/02/13 12:21:55 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 13:57:56 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,12 @@ int	checksort(t_llist *llst)
 	return (1);
 }
 
-int	pushswapapp(t_llist **a, t_llist **b, int argc, char **argv)
+char	*pushswapapp(t_llist **a, t_llist **b, int argc, char **argv)
 {
 	char	*oper;
 
 	if (argc < 2)
-		return (-1);
+		return (NULL);
 	*a = make_list(argc, argv);
 	if (!*a)
 		return (dataerror(ERRORMSG));
@@ -107,8 +107,7 @@ int	pushswapapp(t_llist **a, t_llist **b, int argc, char **argv)
 	ft_printf("%s", oper);
 	llist_clear(a, &del_node);
 	llist_clear(b, &del_node);
-	free(oper);
-	return (1);
+	return (oper);
 }
 
 // int		main(int argc, char **argv)

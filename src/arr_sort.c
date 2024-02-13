@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arr_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:05:37 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/13 11:59:47 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 13:55:32 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,11 @@ char	*arr_sort(t_list **a)
 	}
 	free(arr);
 	return (oper);
+}
+
+void	*freesc(void *ptr1, void *ptr2)
+{
+	free(ptr1);
+	free(ptr2);
+	return (NULL);
 }

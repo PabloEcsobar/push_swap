@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:09:38 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/13 12:21:33 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 13:39:02 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	del_node(void *tmp)
 	free(tmp);
 }
 
-int	dataerror(char *msg)
+char	*dataerror(char *msg)
 {
 	ft_printf("%s\n", msg);
-	return (-1);
+	return (NULL);
 }
 
 int	issign(char ch)

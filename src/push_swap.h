@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/13 12:18:51 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 13:54:54 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 #define PS_K_L		0.11
 #define PS_K_E		1.25
 #define PS_N		0.2485
-#define	ERRORMSG	"Error"
+#define ERRORMSG	"Error"
 
 #include "../ft_printf/libft/libft.h"
 
@@ -41,7 +41,7 @@ typedef struct s_llist
 	struct s_llist		*previos;
 }						t_llist;
 
-int			pushswapapp(t_llist **a, t_llist **b, int argc, char **argv);
+char		*pushswapapp(t_llist **a, t_llist **b, int argc, char **argv);
 
 //////////////////////////////LLIST\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 t_llist		*newnode(void *data);
@@ -99,7 +99,8 @@ char		*trivial_sort(t_llist **a, t_llist **b);
 void		*make_data(long x);
 double		scatter(int count);
 void		del_node(void *tmp);
-int			dataerror(char *msg);
+char		*dataerror(char *msg);
 int			issign(char ch);
 void		*freematrix(char **mat);
 int			checksort(t_llist *llst);
+void		*freesc(void *ptr1, void *ptr2);

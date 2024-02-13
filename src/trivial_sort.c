@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trivial_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:54:48 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/13 12:19:57 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 13:55:09 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,6 @@ char	*sort_b(t_list **a, t_list **b, int min_size)
 		oper = ft_strjoinfree(oper, add_b(a, b, b_max, b_min), 2);
 	while (*(int *)((*b)->content) != *b_max)
 		oper = ft_strjoinfree(oper, rotate_b(b), 2);
+	freesc(b_min, b_max);
 	return (ft_strjoinfree(oper, sort_a(a, b), 2));
 }
