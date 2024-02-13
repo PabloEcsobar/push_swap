@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 20:11:27 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/13 12:44:44 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 14:42:27 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 #include "../ft_printf/headers/ft_printf_bonus.h"
 #include <stdlib.h>
 #include <stdio.h>
+
+int		error_main(char *msg, int errcode)
+{
+	ft_printf("%s\n", msg);
+	return (errcode);
+}
 
 char	*applyoper(t_llist **a, t_llist **b, char *oper)
 {
@@ -53,7 +59,7 @@ int	main(int argc, char **argv)
 	a = make_list(argc, argv);
 	b = NULL;
 	if (!a)
-		return (dataerror("KO"));
+		return (error_main("KO", -1));
 	while (oper)
 	{
 		applyoper(&a, &b, oper);
@@ -64,7 +70,7 @@ int	main(int argc, char **argv)
 	{
 		llist_clear(&a, &del_node);
 		llist_clear(&b, &del_node);
-		return (dataerror("KO"));
+		return (error_main("KO", -1));
 	}
 	ft_printf("OK\n");
 	llist_clear(&a, &del_node);

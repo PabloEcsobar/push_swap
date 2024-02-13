@@ -6,7 +6,7 @@
 /*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:07:40 by polenyc           #+#    #+#             */
-/*   Updated: 2024/02/13 14:13:19 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/13 14:33:10 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int	checksort(t_llist *llst)
 {
 	int	data;
 
+	if (!llst)
+		return (0);
 	data = *(int *)(llst->data);
 	llst = llst->next;
 	while (llst)
