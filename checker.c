@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 20:11:27 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/12 22:02:24 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 11:55:11 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*applyoper(t_llist **a, t_llist **b, char *oper)
 		return (rotate_all(a));
 	if (!ft_strcmp(oper, RB))
 		return (rotate_bll(b));
+	if (!ft_strcmp(oper, RR))
+		return (rrotate_ll(a, b));
 	if (!ft_strcmp(oper, PA))
 		return (push_all(a, b));
 	if (!ft_strcmp(oper, PB))
@@ -30,10 +32,14 @@ char	*applyoper(t_llist **a, t_llist **b, char *oper)
 		return (rev_rotate_all(a));
 	if (!ft_strcmp(oper, RRB))
 		return (rev_rotate_bll(b));
+	if (!ft_strcmp(oper, RRR))
+		return (rrrevrotate_ll(a, b));
 	if (!ft_strcmp(oper, SA))
 		return (swap_all(*a));
 	if (!ft_strcmp(oper, SB))
 		return (swap_bll(*b));
+	if (!ft_strcmp(oper, SS))
+		return (sswap_ll(*a, *b));
 	return (NULL);
 }
 

@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:55:34 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/12 21:42:20 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 11:54:53 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,17 @@ char		*push_all(t_llist **dest, t_llist **src);
 char		*push_bll(t_llist **dest, t_llist **src);
 
 void	    rotate_ll(t_llist **llist);
+char		*rrotate_ll(t_llist **a, t_llist **b);
 char		*rotate_all(t_llist **llist);
 char		*rotate_bll(t_llist **llist);
 
 void	    rev_rotate_ll(t_llist **llist);
+char		*rrrevrotate_ll(t_llist **a, t_llist **b);
 char		*rev_rotate_all(t_llist **llist);
 char		*rev_rotate_bll(t_llist **llist);
 
 void	    swap_ll(t_llist *llist);
+char		*sswap_ll(t_llist *a, t_llist *b);
 char		*swap_all(t_llist *llist);
 char		*swap_bll(t_llist *llist);
 

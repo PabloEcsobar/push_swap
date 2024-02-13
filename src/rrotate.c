@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:48:02 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/08 13:36:04 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 11:55:44 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,11 @@ char	*rev_rotate_bll(t_llist **llist)
 {
 	rev_rotate_ll(llist);
 	return (ft_strdup(RRB));
+}
+
+char	*rrrevrotate_ll(t_llist **a, t_llist **b)
+{
+	rev_rotate_all(a);
+	rev_rotate_bll(b);
+	return (RRR);
 }

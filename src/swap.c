@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:41:57 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/08 13:35:43 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 11:52:32 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,11 @@ char	*swap_bll(t_llist *llist)
 {
 	swap_ll(llist);
 	return (ft_strdup(SB));
+}
+
+char	*sswap_ll(t_llist *a, t_llist *b)
+{
+	swap_all(a);
+	swap_bll(b);
+	return (SS);
 }
