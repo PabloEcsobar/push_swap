@@ -6,7 +6,7 @@
 /*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 19:05:58 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/06 13:20:02 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/13 15:28:45 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <time.h>
 #include "../src/push_swap.h"
 
-void	*make_data(int x)
+void	*make_data_t(int x)
 {
 	int	*tmp;
 
@@ -23,11 +23,6 @@ void	*make_data(int x)
 		return (NULL);
 	*tmp = x;
 	return ((void *)tmp);
-}
-
-void	del_node(void *tmp)
-{
-	free(tmp);
 }
 
 int	is_numll(t_llist *list, int x)
@@ -69,7 +64,7 @@ t_llist	*crt_randllist(int size)
 			--i;
 			continue ;
 		}
-		add_back(&list, newnode(make_data(data)));
+		add_back(&list, newnode(make_data_t(data)));
 	}
 	return (list);
 }
@@ -82,7 +77,7 @@ t_llist	*crt_arrllist(int size)
 	list = NULL;
     data = rand() % 1000;
 	for (int i= 0; i < size; ++i)
-		add_back(&list, newnode(make_data(i + data)));
+		add_back(&list, newnode(make_data_t(i + data)));
 	return (list);
 }
 
@@ -93,7 +88,7 @@ t_llist	*llistcpy(t_llist *list)
 	res = NULL;
     while (list)
     {
-        add_back(&res, newnode(make_data(*(int *)(list->data))));
+        add_back(&res, newnode(make_data_t(*(int *)(list->data))));
         list = list->next;
     }
     return (res);
@@ -150,16 +145,18 @@ int	bad_func(t_llist **a, t_llist **b, char *msg, void (*del)(void *))
 int	test(t_llist *list, int scatter, void (*del)(void *))
 {
 	t_llist		*tmp;
+	t_llist		*b;
 	int			data;
 	char		*oper;
 	int			count;
 
 	tmp = llistcpy(list);
+	b = NULL;
 	// if (llist_size(list) < 10)
 	// 	oper = llst_tolst(&list);
 	// else
 	// 	oper = sndtimes(&list, scatter);
-	oper = push_swap(&list);
+	oper = push_swap(&list, &b);
 	// printf("INSTRUCTION:\n%s", oper);
 	if (!llstcmp(tmp, list))
 		return (bad_func(&list, &tmp, "ERROR!!! BAD SORT ALGORITHM!!!", del));
