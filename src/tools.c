@@ -13,11 +13,14 @@
 #include "push_swap.h"
 #include "../ft_printf/headers/ft_printf_bonus.h"
 #include <stdlib.h>
+#include <limits.h>
 
-void	*make_data(int x)
+void	*make_data(long x)
 {
 	int	*tmp;
 
+	if (x > (long)INT_MAX || x < (long)INT_MIN)
+		return (NULL);
 	tmp = malloc(sizeof(int));
 	if (!tmp)
 		return (NULL);

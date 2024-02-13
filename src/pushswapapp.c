@@ -63,7 +63,8 @@ t_llist	*make_list(int argc, char **argv)
 	{
 		if (!checkstr(tmp[i]))
 			return (llist_clear(&llst, &del_node));
-		llst = add_back(&llst, newnode(make_data(ft_atoi(tmp[i]))));
+		if (!add_back(&llst, newnode(make_data(ft_atoi(tmp[i])))))
+			return (llist_clear(&llst, &del_node));
 		++i;
 	}
 	if (argc == 2)
@@ -92,18 +93,20 @@ int	pushswapapp(t_llist **a, t_llist **b, int argc, char **argv)
 	char	*oper;
 
 	if (argc < 2)
-		return (dataerror("ERROR!!!"));
+		return (-1);
 	*a = make_list(argc, argv);
 	if (!*a)
-		return (dataerror("ERROR!!!"));
+		return (dataerror(ERRORMSG));
 	oper = push_swap(a, b);
 	if (!oper || !checksort(*a))
 	{
 		llist_clear(a, &del_node);
-		return (dataerror("ERROR!!!"));
+		llist_clear(b, &del_node);
+		return (dataerror(ERRORMSG));
 	}
 	ft_printf("%s", oper);
 	llist_clear(a, &del_node);
+	llist_clear(b, &del_node);
 	free(oper);
 	return (1);
 }

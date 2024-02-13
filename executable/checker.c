@@ -49,11 +49,11 @@ int	main(int argc, char **argv)
 	t_llist	*a;
 	t_llist	*b;
 
+	oper = get_next_line(0);
 	a = make_list(argc, argv);
 	b = NULL;
 	if (!a)
-		return (-1);
-	oper = get_next_line(0);
+		return (dataerror("KO"));
 	while (oper)
 	{
 		applyoper(&a, &b, oper);

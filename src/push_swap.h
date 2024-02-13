@@ -30,6 +30,7 @@
 #define PS_K_L		0.11
 #define PS_K_E		1.25
 #define PS_N		0.2485
+#define	ERRORMSG	"Error"
 
 #include "../ft_printf/libft/libft.h"
 
@@ -95,7 +96,7 @@ char		*arr_sort(t_list **a);
 char		*sndtimes(t_llist **a, t_llist **b, int scatter);
 char		*trivial_sort(t_llist **a, t_llist **b);
 //////////////////////////////TOOLS\\\\\\\\\\\\\\\\\\\\\\\\\\\/
-void		*make_data(int x);
+void		*make_data(long x);
 double		scatter(int count);
 void		del_node(void *tmp);
 int			dataerror(char *msg);

@@ -18,6 +18,8 @@ t_llist	*newnode(void *data)
 {
 	t_llist	*tmp;
 
+	if (!data)
+		return (NULL);
 	tmp = malloc(sizeof(t_llist));
 	if (!tmp)
 		return (NULL);
