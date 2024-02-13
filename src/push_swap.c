@@ -20,6 +20,7 @@ t_list	*llst_tolst(t_llist *llst)
 {
 	t_list	*lst;
 
+	lst = NULL;
 	while (llst)
 	{
 		ft_lstadd_back(&lst, ft_lstnew(make_data(*(int *)(llst->data))));
