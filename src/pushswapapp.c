@@ -6,7 +6,7 @@
 /*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:07:40 by polenyc           #+#    #+#             */
-/*   Updated: 2024/02/13 13:57:56 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/13 14:13:19 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ char	*pushswapapp(t_llist **a, t_llist **b, int argc, char **argv)
 		llist_clear(b, &del_node);
 		return (dataerror(ERRORMSG));
 	}
-	ft_printf("%s", oper);
 	llist_clear(a, &del_node);
 	llist_clear(b, &del_node);
 	return (oper);
