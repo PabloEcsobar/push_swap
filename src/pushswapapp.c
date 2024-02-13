@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswapapp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
+/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:07:40 by polenyc           #+#    #+#             */
-/*   Updated: 2024/02/13 14:33:10 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/13 20:25:19 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,31 +47,6 @@ int	checkstr(char *str)
 	return (1);
 }
 
-t_llist	*make_list(int argc, char **argv)
-{
-	t_llist	*llst;
-	char	**tmp;
-	int		i;
-
-	llst = NULL;
-	if (argc == 2)
-		tmp = ft_split(argv[1], SPACE_S);
-	else
-		tmp = argv + 1;
-	i = 0;
-	while (tmp[i])
-	{
-		if (!checkstr(tmp[i]))
-			return (llist_clear(&llst, &del_node));
-		if (!add_back(&llst, newnode(make_data(ft_atoi(tmp[i])))))
-			return (llist_clear(&llst, &del_node));
-		++i;
-	}
-	if (argc == 2)
-		freematrix(tmp);
-	return (llst);
-}
-
 int	checksort(t_llist *llst)
 {
 	int	data;
@@ -95,16 +70,15 @@ char	*pushswapapp(t_llist **a, t_llist **b, int argc, char **argv)
 	char	*oper;
 
 	if (argc < 2)
-		return (NULL);
+		return (ft_strdup(""));
 	*a = make_list(argc, argv);
 	if (!*a)
-		return (dataerror(ERRORMSG));
+		return (NULL);
 	oper = push_swap(a, b);
 	if (!oper || !checksort(*a))
 	{
-		llist_clear(a, &del_node);
-		llist_clear(b, &del_node);
-		return (dataerror(ERRORMSG));
+		free(oper);
+		oper = NULL;
 	}
 	llist_clear(a, &del_node);
 	llist_clear(b, &del_node);
