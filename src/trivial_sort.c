@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trivial_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
+/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:54:48 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/05 14:10:00 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/13 12:19:57 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*add_b(t_list **a, t_list **b, int *b_max, int *b_min)
 	char	*oper;
 	int		prev;
 	int		data;
-	
+
 	if (*(int *)(*a)->content < *b_min)
 		return (add_min(a, b, b_max, b_min));
 	if (*(int *)(*a)->content > *b_max)
@@ -77,7 +77,6 @@ char	*sort_a(t_list **a, t_list **b)
 	max = *(int *)((*a)->next->next->content);
 	av = *(int *)((*a)->next->content);
 	min = *(int *)((*a)->content);
-
 	while (*b && *(int *)((*b)->content) > max)
 		oper = ft_strjoinfree(oper, push_a(a, b), 2);
 	oper = ft_strjoinfree(oper, rev_rotate_a(a), 2);
@@ -98,7 +97,7 @@ char	*sort_b(t_list **a, t_list **b, int min_size)
 	char	*oper;
 	int		*b_max;
 	int		*b_min;
-	
+
 	if (ft_lstsize(*a) <= min_size)
 		return (element_sort(a));
 	oper = NULL;

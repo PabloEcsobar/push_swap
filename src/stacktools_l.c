@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:35:07 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/08 13:38:04 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 12:21:20 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push(t_list **dest, t_list **src)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	if (!(*src))
 		return ;

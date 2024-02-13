@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:07:40 by polenyc           #+#    #+#             */
-/*   Updated: 2024/02/12 14:58:28 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 12:21:55 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int		checksuf(char *num)
+int	checksuf(char *num)
 {
 	if (!(*num))
 		return (1);
@@ -26,7 +26,7 @@ int		checksuf(char *num)
 	return (0);
 }
 
-int		checkstr(char *str)
+int	checkstr(char *str)
 {
 	if (!ft_isdigit(*str) && !issign(*str))
 		return (0);
@@ -71,7 +71,7 @@ t_llist	*make_list(int argc, char **argv)
 	return (llst);
 }
 
-int		checksort(t_llist *llst)
+int	checksort(t_llist *llst)
 {
 	int	data;
 

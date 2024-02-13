@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 22:18:11 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/12 15:04:42 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 12:10:31 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "push_swap.h"
 #include "../sorts_alg/sorts_alg.h"
 
-static int		*make_arr(t_llist *a, int size)
+static int	*make_arr(t_llist *a, int size)
 {
 	int	*arr;
 	int	*tmp;
@@ -34,61 +34,7 @@ static int		*make_arr(t_llist *a, int size)
 	return (arr);
 }
 
-int			score_a(t_llist *a, int num)
-{
-	t_llist		*tmp;
-	int			counter;
-	int			size;
-
-	counter = 0;
-	tmp = a;
-	size = llist_size(a) + 1;
-	size /= 2;
-	while (counter < size && *(int *)(tmp->data) > num)
-	{
-		tmp = tmp->next;
-		++counter;
-	}
-	tmp = a->previos;
-	if (counter && tmp->next && *(int *)(tmp->next->data) <= num)
-		return (-2);
-	--counter;
-	while (counter > 0 && *(int *)(tmp->data) > num)
-	{
-		tmp = tmp->previos;
-		--counter;
-	}
-	return (counter);
-}
-
-int			score_b(t_llist *a, int num)
-{
-	t_llist	*tmp;
-	int			counter;
-	int			size;
-
-	counter = 0;
-	tmp = a;
-	size = llist_size(a) + 1;
-	size /= 2; 
-	while (counter < size && *(int *)(tmp->data) != num)
-	{
-		tmp = tmp->next;
-		++counter;
-	}
-	tmp = a->previos;
-	if (counter && tmp->next && *(int *)(tmp->next->data) == num)
-		return (-2);
-	--counter;
-	while (counter > 0 && *(int *)(tmp->data) != num)
-	{
-		tmp = tmp->previos;
-		--counter;
-	}
-	return (counter);
-}
-
-char		*findcorel_a(t_llist **a, int *arr, int i)
+char	*findcorel_a(t_llist **a, int *arr, int i)
 {
 	char	*oper;
 	int		score;
@@ -108,7 +54,7 @@ char		*findcorel_a(t_llist **a, int *arr, int i)
 	return (oper);
 }
 
-char		*sndt_sort(t_llist **a, t_llist **b, int scatt)
+char	*sndt_sort(t_llist **a, t_llist **b, int scatt)
 {
 	char	*oper;
 	int		*arr;
@@ -133,7 +79,7 @@ char		*sndt_sort(t_llist **a, t_llist **b, int scatt)
 	return (oper);
 }
 
-char		*findcorel_b(t_llist **b, int *arr, int i)
+char	*findcorel_b(t_llist **b, int *arr, int i)
 {
 	char	*oper;
 	int		score;
@@ -153,7 +99,7 @@ char		*findcorel_b(t_llist **b, int *arr, int i)
 	return (oper);
 }
 
-char		*sndtimes(t_llist **a, t_llist **b, int scatter)
+char	*sndtimes(t_llist **a, t_llist **b, int scatter)
 {
 	char		*oper;
 	int			*arr;

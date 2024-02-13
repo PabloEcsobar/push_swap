@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arr_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
+/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:05:37 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/05 14:07:16 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/13 11:59:47 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static int		*make_arr(t_list *a, int size)
+static int	*make_arr(t_list *a, int size)
 {
 	int	*arr;
 	int	*tmp;
@@ -67,4 +67,3 @@ char	*arr_sort(t_list **a)
 	free(arr);
 	return (oper);
 }
-

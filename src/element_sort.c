@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   element_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
+/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:53:40 by polenyc           #+#    #+#             */
-/*   Updated: 2024/02/05 14:08:45 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/13 12:02:13 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		find_max(t_list *a)
+int	find_max(t_list *a)
 {
 	int		max;
 
 	if (!a || !a->content)
-		return 0;
+		return (0);
 	max = *(int *)(a->content);
 	a = a->next;
 	while (a)
@@ -29,12 +29,12 @@ int		find_max(t_list *a)
 	return (max);
 }
 
-int		find_min(t_list *a)
+int	find_min(t_list *a)
 {
 	int		min;
 
 	if (!a || !a->content)
-		return 0;
+		return (0);
 	min = *(int *)(a->content);
 	a = a->next;
 	while (a)
@@ -61,7 +61,7 @@ char	*put_max(t_list **a, int max, int size, int pos)
 	if (*(int *)((*a)->next->content) == max && size > 2)
 		return (swap_a(*a));
 	return (rev_rotate_a(a));
-}	
+}
 
 char	*element_sort(t_list **a)
 {

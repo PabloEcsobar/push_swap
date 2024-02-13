@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:09:38 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/09 20:02:03 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 12:21:33 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	dataerror(char *msg)
 	return (-1);
 }
 
-int		issign(char ch)
+int	issign(char ch)
 {
 	if (ch != '+' && ch != '-')
 		return (0);

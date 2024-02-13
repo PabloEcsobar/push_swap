@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 22:33:21 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/09 14:18:50 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 12:01:24 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ t_llist	*add_back(t_llist **llist, t_llist *new)
 		(*llist)->previos->next = new;
 	else
 		(*llist)->next = new;
-	
 	(*llist)->previos = new;
 	return (*llist);
 }
@@ -66,18 +65,18 @@ t_llist	*add_front(t_llist **llist, t_llist *new)
 	return (*llist);
 }
 
-void		*llist_clear(t_llist **llist, void (*del)(void *d))
+void	*llist_clear(t_llist **llist, void (*del)(void *d))
 {
 	if (!(*llist))
 		return (NULL);
 	llist_clear(&((*llist)->next), del);
-	del((*llist)->data);	
+	del((*llist)->data);
 	free(*llist);
 	*llist = NULL;
 	return (NULL);
 }
 
-int			llist_size(t_llist *llist)
+int	llist_size(t_llist *llist)
 {
 	int			size;
 
