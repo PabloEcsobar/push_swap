@@ -6,16 +6,19 @@
 #    By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/05 12:43:58 by polenyc           #+#    #+#              #
-#    Updated: 2024/02/13 12:31:23 by blackrider       ###   ########.fr        #
+#    Updated: 2024/02/13 12:45:43 by blackrider       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAMEEXECUTE = pushswap
 NAMECHECKER = checker
 NAME = libpush_swap.a
+
 TEST = test
 TMP = libtmp.a
 LIBS = libs
+EXECPS_APP = pushswap.c
+EXECCK_APP = checker.c
 
 FILES = arr_sort.c dlist.c element_sort.c push_swap.c push.c rotate.c rrotate.c \
 	swap.c sandytimes.c scatter.c trivial_sort.c stacktools_l.c stacktools_ll.c \
@@ -26,6 +29,7 @@ TESTFILE = test_onedata.c
 TESTDIR = tests
 SRCDIR = src
 OBJDIR = $(SRCDIR)/objs
+EXECDIR = executable
 
 # SRC = $(addprefix $(SRCDIR)/, $(FILES))
 SRC = $(wildcard $(SRCDIR)/*.c)
@@ -51,12 +55,19 @@ LFTPOW = -L$(FTPOWDIR) -l$(FTPOW)
 LGNL = -L$(GNLDIR) -l$(GNL)
 LSORTA = -L$(SORTADIR) -l$(SORTA)
 
-.PHONY: all clean fclean re re_bonus
+.PHONY: all clean fclean re re_bonus checker
 
 all: $(NAMEEXECUTE)
 
+tst: $(TEST)
+
+bonus: $(NAMEEXECUTE) $(NAMECHECKER)
+
 $(NAMEEXECUTE): $(NAME)
-	$(CC) $(CFLAGS) main.c $(NAME) -o $@
+	$(CC) $(CFLAGS) $(EXECDIR)/$(EXECPS_APP) $(NAME) -o $@
+
+$(NAMECHECKER): $(NAME)
+	$(CC) $(CFLAGS) $(EXECDIR)/$(EXECCK_APP) $(NAME) -o $@
   
 $(NAME): $(OBJ) $(TMP)
 	ar -rc $(NAME) *.o $(OBJ)
@@ -87,8 +98,6 @@ $(SORTA):
 
 $(TEST): $(NAME)
 	$(CC) $(TST) $(NAME) -o $@
-	
-tst: $(TEST)
 
 clean:
 	$(MAKE) -C $(FTPOWDIR) clean
@@ -103,7 +112,7 @@ fclean: clean
 	$(MAKE) -C $(FTPRINTFDIR) fclean
 	$(MAKE) -C $(GNLDIR) fclean
 	$(MAKE) -C $(SORTADIR) fclean
-	rm -f $(NAME) $(TEST) $(NAMEEXECUTE)
+	rm -f $(NAME) $(TEST) $(NAMEEXECUTE) $(NAMECHECKER)
 
 re: fclean all
 
