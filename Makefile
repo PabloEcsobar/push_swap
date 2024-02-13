@@ -6,10 +6,12 @@
 #    By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/05 12:43:58 by polenyc           #+#    #+#              #
-#    Updated: 2024/02/09 20:05:01 by blackrider       ###   ########.fr        #
+#    Updated: 2024/02/13 12:31:23 by blackrider       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAMEEXECUTE = pushswap
+NAMECHECKER = checker
 NAME = libpush_swap.a
 TEST = test
 TMP = libtmp.a
@@ -17,7 +19,7 @@ LIBS = libs
 
 FILES = arr_sort.c dlist.c element_sort.c push_swap.c push.c rotate.c rrotate.c \
 	swap.c sandytimes.c scatter.c trivial_sort.c stacktools_l.c stacktools_ll.c \
-	tools.c \
+	tools.c score.c\
 	
 TESTFILE = test_onedata.c
 
@@ -42,6 +44,7 @@ GNL = gnl
 SORTA = sortsalg
 
 CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 CFLAGSO = -c -Wall -Wextra -Werror
 LFTPRINTF = -L$(FTPRINTFDIR) -l$(FTPRINTF)
 LFTPOW = -L$(FTPOWDIR) -l$(FTPOW)
@@ -50,7 +53,10 @@ LSORTA = -L$(SORTADIR) -l$(SORTA)
 
 .PHONY: all clean fclean re re_bonus
 
-all: $(NAME)
+all: $(NAMEEXECUTE)
+
+$(NAMEEXECUTE): $(NAME)
+	$(CC) $(CFLAGS) main.c $(NAME) -o $@
   
 $(NAME): $(OBJ) $(TMP)
 	ar -rc $(NAME) *.o $(OBJ)
@@ -97,7 +103,7 @@ fclean: clean
 	$(MAKE) -C $(FTPRINTFDIR) fclean
 	$(MAKE) -C $(GNLDIR) fclean
 	$(MAKE) -C $(SORTADIR) fclean
-	rm -f $(NAME) $(TEST)
+	rm -f $(NAME) $(TEST) $(NAMEEXECUTE)
 
 re: fclean all
 
