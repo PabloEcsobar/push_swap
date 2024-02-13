@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:07:40 by polenyc           #+#    #+#             */
-/*   Updated: 2024/02/13 20:25:19 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/13 20:50:53 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	checksuf(char *num)
 int	checkstr(char *str)
 {
 	if (!ft_isdigit(*str) && !issign(*str))
+		return (0);
+	if (ft_strlen(str) < 2 && !ft_isdigit(*str))
 		return (0);
 	++str;
 	while (*str)
