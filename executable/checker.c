@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
+/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 20:11:27 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/14 14:23:06 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/14 16:05:10 by polenyc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,26 +49,33 @@ char	*applyoper(t_llist **a, t_llist **b, char *oper)
 	return (NULL);
 }
 
-int	main(int argc, char **argv)
+int	checksortoper(t_llist **a, t_llist **b)
 {
 	char	*oper;
+
+	oper = get_next_line(0);
+	while (oper && ft_strcmp(oper, "q\n"))
+	{
+		if (!applyoper(a, b, oper))
+			return (0);
+		free(oper);
+		oper = get_next_line(0);
+	}
+	free(oper);
+	return (1);
+}
+
+int	main(int argc, char **argv)
+{
 	t_llist	*a;
 	t_llist	*b;
 
 	if (argc < 2)
 		return (0);
-	oper = get_next_line(0);
 	a = make_list(argc, argv);
 	b = NULL;
-	if (!a)
-		return (error_main("KO", -1));
-	while (oper && ft_strcmp(oper, "q\n"))
-	{
-		applyoper(&a, &b, oper);
-		free(oper);
-		oper = get_next_line(0);
-	}
-	free(oper);
+	if (!a || !checksortoper(&a, &b))
+		return (error_main(ERRORMSG, -1));
 	if (!checksort(a) || b)
 		ft_printf("KO\n");
 	else

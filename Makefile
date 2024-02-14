@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+         #
+#    By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/05 12:43:58 by polenyc           #+#    #+#              #
-#    Updated: 2024/02/13 21:10:29 by blackrider       ###   ########.fr        #
+#    Updated: 2024/02/14 16:05:26 by polenyc          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ all: $(NAMEEXECUTE)
 
 tst: $(TEST)
 
-bonus: $(NAMEEXECUTE) $(NAMECHECKER)
+bonus: $(NAME) $(NAMECHECKER)
 
 $(NAMEEXECUTE): $(NAME)
 	$(CC) $(CFLAGS) $(EXECDIR)/$(EXECPS_APP) $(NAME) -o $@
