@@ -6,14 +6,20 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 21:00:23 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/24 15:03:18 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/14 14:40:20 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "sorts_alg.h"
 
-int		*merge(int *data, int f, int r)
+int	rand_part(int *data, int star, int end)
+{
+	swap(data, rand() % end, end);
+	return (partition(data, star, end));
+}
+
+int	*merge(int *data, int f, int r)
 {
 	int	q;
 

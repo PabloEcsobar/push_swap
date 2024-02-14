@@ -6,7 +6,7 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 19:41:58 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/25 15:10:48 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/14 14:40:53 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	swap(int *data, int i, int j)
 	data[j] = tmp;
 }
 
-int		partition(int *data, int star, int end)
+int	partition(int *data, int star, int end)
 {
 	int	x;
 	int	i;
@@ -45,12 +45,6 @@ int		partition(int *data, int star, int end)
 	return (i);
 }
 
-int		rand_part(int *data, int star, int end)
-{
-	swap(data, rand() % end, end);
-	return (partition(data, star, end));
-}
-
 void	quick_sort(int *data, int f, int r)
 {
 	int	q;
@@ -63,7 +57,7 @@ void	quick_sort(int *data, int f, int r)
 	}
 }
 
-int		*quick_sort_insert(int *data, int f, int r)
+int	*quick_sort_insert(int *data, int f, int r)
 {
 	int	q;
 

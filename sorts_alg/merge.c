@@ -6,13 +6,13 @@
 /*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 23:15:40 by blackrider        #+#    #+#             */
-/*   Updated: 2024/01/20 23:16:28 by blackrider       ###   ########.fr       */
+/*   Updated: 2024/02/14 14:42:15 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		**crt_arrs(int *data, int f, int q, int r)
+int	**crt_arrs(int *data, int f, int q, int r)
 {
 	int	**arr;
 	int	i;
@@ -47,7 +47,7 @@ void	arr_free(int **arr, int size)
 	free(arr);
 }
 
-int		*merge_sort(int *data, int f, int q, int r)
+int	*merge_sort(int *data, int f, int q, int r)
 {
 	int	**arr;
 	int	i;
@@ -56,8 +56,6 @@ int		*merge_sort(int *data, int f, int q, int r)
 	int	size_r;
 
 	arr = crt_arrs(data, f, q, r);
-	if (!arr)
-		return (NULL);
 	size_f = q - f + 1;
 	size_r = r - q;
 	i = 0;
