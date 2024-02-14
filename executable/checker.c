@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
+/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 20:11:27 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/13 14:42:27 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/14 14:03:05 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int		error_main(char *msg, int errcode)
+int	error_main(char *msg, int errcode)
 {
 	ft_printf("%s\n", msg);
 	return (errcode);
@@ -55,24 +55,25 @@ int	main(int argc, char **argv)
 	t_llist	*a;
 	t_llist	*b;
 
+	if (argc < 2)
+		return (0);
 	oper = get_next_line(0);
 	a = make_list(argc, argv);
 	b = NULL;
 	if (!a)
 		return (error_main("KO", -1));
-	while (oper)
+	while (oper && ft_strcmp(oper, "q\n"))
 	{
 		applyoper(&a, &b, oper);
 		free(oper);
 		oper = get_next_line(0);
 	}
+	free(oper);
 	if (!checksort(a) || b)
-	{
-		llist_clear(&a, &del_node);
-		llist_clear(&b, &del_node);
-		return (error_main("KO", -1));
-	}
-	ft_printf("OK\n");
+		ft_printf("KO\n");
+	else
+		ft_printf("OK\n");
 	llist_clear(&a, &del_node);
+	llist_clear(&b, &del_node);
 	return (0);
 }
