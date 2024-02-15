@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: polenyc <polenyc@student.42.fr>            +#+  +:+       +#+        */
+/*   By: blackrider <blackrider@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 20:11:27 by blackrider        #+#    #+#             */
-/*   Updated: 2024/02/14 16:05:10 by polenyc          ###   ########.fr       */
+/*   Updated: 2024/02/14 20:18:21 by blackrider       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,25 @@ char	*applyoper(t_llist **a, t_llist **b, char *oper)
 int	checksortoper(t_llist **a, t_llist **b)
 {
 	char	*oper;
+	char	*tmp;
+	int		res;
 
+	res = 1;
 	oper = get_next_line(0);
 	while (oper && ft_strcmp(oper, "q\n"))
 	{
-		if (!applyoper(a, b, oper))
-			return (0);
+		tmp = applyoper(a, b, oper);
 		free(oper);
+		if (!tmp)
+		{
+			res = 0;
+			break ;
+		}
+		free(tmp);
 		oper = get_next_line(0);
 	}
 	free(oper);
-	return (1);
+	return (res);
 }
 
 int	main(int argc, char **argv)
